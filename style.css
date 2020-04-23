@@ -5,20 +5,24 @@ a {
 	color: white;
 }
 
+a:hover {
+	color: darkgray;
+}
+
 body {
 	margin: 0;
-	margin-top: -1em;
 }
 
 .menu-navbar {
 	background-color: deepskyblue;
-	padding-top: 0;
-	padding-bottom: 0;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
 }
 
 .navbar {
 	list-style-type: none;
 	text-align: end;
+	margin-right: 4em;
 }
 
 .navbar li {
