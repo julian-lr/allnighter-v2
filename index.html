@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="https://use.typekit.net/pbk1pdf.css">
 </head>
 <body>
+	
 	<div class="container">
 		<div class="menu-container">
-			<img src="allnighter-logo.png" alt="allnighter logo" class="img-logo"/>
 			<div class="menu-navbar">
 				<ul class="navbar">
 					<li>
@@ -21,15 +21,86 @@
 				</ul>
 			</div>	
 	</div>
-				<h1>Welcome to allnighter!</h1>
-		<h2>Please upload the HTML to analyse</h2>
-	<div class="form-upload">
-		<form class="upload" action="/action_page.php">
-			<input type="button" class="btn" value="Attach">
- 			<input type="submit" class="btn">
-		</form>
+	<div class="upload">
+		<input class="btn" id="file" type="file"  />
 	</div>
-<input type="button" class="start" value="Start">
+	<div class="upload">
+		 <button type="button">Click Me!</button> 
+	</div>
+	<div>
+		<p id="demo">    </p>
+	</div>
 </div>
+	
+<script>
+	function startOp(e){
+		
+		
+		
+		
+		
+	}
+	function StartOP(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result;
+    displayContents(contents);
+  };
+  reader.readAsText(file);
+}
+	
+	function displayContents(contents) {
+		
+		var texto = contents;
+		
+		console.log(contents);
+		
+		if(texto.includes('�')){
+			console.log('contiene �');
+			var result = "";
+			var lines = [];
+			lines = texto.split("\r\n");
+			console.log(lines);
+			
+for(var linea = 0;linea < lines.length;linea++){
+	
+	for(var puesto = 0;puesto < lines[linea].length;puesto++){
+		console.log("hi");
+	if(lines[linea].charAt(puesto)== '�'){
+	   
+	   result = result + "CARACTER ESPECIAL ENCONTRADO- LINEA: "+ (linea+1).toString()+"- PUESTO: "+(puesto+1).toString()+"/n";
+	   
+	   }
+	
+}
+	
+}
+			var element = document.getElementById('demo');
+  element.textContent = result;
+			
+		}else{
+			var element = document.getElementById('demo');
+  element.textContent = "EL TEXTO NO CONTIENE CARACTERES ESPECIALES";
+		}
+		
+		
+		
+}
+
+
+document.getElementById('file')
+  .addEventListener('change', StartOP, false);
+		
+	
+	
+	
+</script>
+
+
+	
 </body>
 </html>
