@@ -5,19 +5,18 @@ a {
 	color: white;
 }
 
+body {
+	margin: 0;
+}
+
 .menu-navbar {
-	margin-top: -0.5em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	padding-right: 5em;
-	margin-left: -0.5em;
-	margin-right: -0.5em;
 	background-color: deepskyblue;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .navbar {
 	list-style-type: none;
-	margin: 0 auto;
 	text-align: end;
 }
 
@@ -25,5 +24,7 @@ a {
 	display: inline-block;
 	margin-left: 3em;
 	font-size: 14pt;
-	font-family: 
+	font-family: trade-gothic-next, sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
