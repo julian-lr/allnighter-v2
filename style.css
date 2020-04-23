@@ -1,15 +1,19 @@
 @charset "utf-8";
 @media only screen and (min-width: 480px) {
 /* a text decoration on all links */
-	.img-logo {
-		margin-bottom: -1em;
-	}
 	a {
 	text-decoration: none;
 	color: white;
 	transition: 0.3s;
 }
 
+	#img-logo {
+margin-top: 0.7em;
+		width: 50px;
+	margin-right: 75%;
+		
+	}
+	
 a:hover {
 	color: lightgray;
 }
@@ -28,6 +32,8 @@ body {
 .navbar {
 	list-style-type: none;
 	text-align: end;
+	margin-top: -2em;
+	padding-bottom: 0.2em;
 }
 	
 .navbar li {
