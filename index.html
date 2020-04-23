@@ -12,31 +12,146 @@
 		<div class="menu-container">
 			<div class="menu-navbar">
 				<img src="allnighter-logo.png" alt="allnighter" id="img-logo"/>
-				<ul class="navbar">
-					<li>
-					<a href="#" class="start-nav">Inicio</a>
-					</li>
-					<li> </li>
-					<li>
-					<a href="#" class="storage-nav">Backoffice</a>
-					</li>
-				</ul>
 			</div>	
 	</div>
-				<h1>¡Bienvenido a AllNighter!</h1>
-		<h2>Por favor, apreta "Iniciar" y poné tu HTML para analizar.</h2>
+				<h1>¡Bienvenidx a AllNighter!</h1>
+		<h2>Tenes un limite de hasta 10 archivos para testear.</h2>
 	<div class="form-upload">
-		<form class="upload" action="/action_page.php">
-			<input type="button" class="btn" value="Iniciar">
+		<form class="upload" >
+			<input type="file"  class="btn" value="Iniciar" id="btn" multiple>
+			
 		</form>
 	</div>
 </div>
 	<div id="outdiv">
 	<div id="console">
-		<p class="line-1 anim-typewriter">Este deberia ser el puto resultado</p></div></div>
+	</div></div>
 	
 	<div class="footer">
-	<p>Este sitio web ha sido construido por Lucas Salmerón y Julián Laurito.</p>
+	<p>Este sitio web ha sido construido por Lucas Salmerón y Julián Laurito.<br><a href="#" class="footer-link">Invitanos una birra &hearts;</a></p>
 	</div>
+<script>
+var namef = ["", "", "","", "", "","", "", "",""];
+	
+	
+	var a = 0;
+	function StartOP(e) {
+		a=0;
+	
+		 var div = document.getElementById("console"); 
+
+		while (div.firstChild) {
+    div.removeChild(div.firstChild);
+}
+           
+		for(var i = 0; i<e.target.files.length;i++){
+			namef[i] = e.target.files[i].name;
+		}
+		
+
+		var tag;
+		var text;
+		var element;
+		
+		
+		
+ /* if (!file) {
+	  tag = document.createElement("p");
+       text = document.createTextNode("FALLO AL ABRIR ARCHIVO");
+       tag.appendChild(text);
+	   tag.className = "line-1 anim-typewriter";
+       element = document.getElementById("console");
+       element.appendChild(tag);
+    return;
+	  
+  }*/
+		
+		
+	for(var i = 0; i < e.target.files.length;i++){
+/*	tag = document.createElement("p");
+       text = document.createTextNode("NOMBRE DE ARCHIVO: " +e.target.files[i].name);
+       tag.appendChild(text);
+       element = document.getElementById("console");
+       element.appendChild(tag);
+		*/
+	
+	var reader = new FileReader();
+  reader.onloadend = function(e) {
+    var contents = e.target.result;
+    displayContents(contents);
+  };
+	
+	  reader.readAsText(e.target.files[i]);
+  }	
+		
+		
+  
+  
+ 
+  
+		
+		
+}
+	
+	function displayContents(contents) {
+		
+		var texto = contents;
+		var tag;
+   var text;
+   var element;
+		
+		
+		var name = namef[a];
+		a++;
+		if(texto.includes('�')){
+			var result = "";
+			var lines = [];
+			lines = texto.split("\r\n");
+			var element = document.getElementById('demo');
+			
+for(var linea = 0;linea < lines.length;linea++){
+	
+	for(var puesto = 0;puesto < lines[linea].length;puesto++){
+	if(lines[linea].charAt(puesto)== '�'){
+		
+	   result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+"- PUESTO: "+(puesto+1).toString()+'\n';
+	    tag = document.createElement("p");
+		tag.className = "line-1 anim-typewriter";
+       text = document.createTextNode(result);
+       tag.appendChild(text);
+       element = document.getElementById("console");
+       element.appendChild(tag);
+	   }
+	
+}
+	
+}
+		/*	var element = document.getElementById('demo');
+  element.textContent += result;
+			
+		*/	
+		}else{
+			
+			tag = document.createElement("p");
+       text = document.createTextNode("ARCHIVO: "+name+ " - NO CONTIENE CARACTERES ESPECIALES");
+       tag.appendChild(text);
+       element = document.getElementById("console");
+		tag.className = "line-1 anim-typewriter";
+       element.appendChild(tag);
+		}
+		
+		
+		
+}
+	
+
+document.getElementById('btn')
+  .addEventListener('change', StartOP, false);
+		
+	
+	
+	
+</script>
+
 </body>
 </html>
