@@ -107,7 +107,7 @@ h2 {
 			font-style: normal;
 		
 	}
-}
+
 	/* INTENTO CONSOLA */
 .line-1{
     position: relative;
@@ -132,14 +132,27 @@ h2 {
 	width: 85%;
 	margin: 0 auto;
 	padding: 1em;
-	height: 150px;
+	height: 350px;
 	border-radius: 5px;
+	background-image: url("white lines.png");
+	background-size:46px;
 }
 
 /* Animation */
 .anim-typewriter{
   animation: typewriter 4s steps(44) 1s 1 normal both,
              blinkTextCursor 500ms steps(44) infinite normal;
+}
+	
+	.footer {
+		margin-top: 5em;
+		font-family: tgn-soft-round-con, sans-serif;
+
+font-weight: 700;
+
+font-style: normal;
+	}
+	
 }
 @keyframes typewriter{
   from{width: 0;}
@@ -149,3 +162,4 @@ h2 {
   from{border-right-color: rgba(255,255,255,.75);}
   to{border-right-color: transparent;}
 }
+	
