@@ -3,14 +3,16 @@
 a {
 	text-decoration: none;
 	color: white;
+	transition: 0.3s;
 }
 
 a:hover {
-	color: darkgray;
+	color: lightgray;
 }
 
 body {
 	margin: 0;
+	text-align: center;
 }
 
 .menu-navbar {
@@ -31,5 +33,18 @@ body {
 	font-size: 14pt;
 	font-family: trade-gothic-next, sans-serif;
 	font-weight: 400;
+	font-style: normal;
+}
+
+/* FORMULARIO DE ENVIO */
+.upload {
+	display: inline-block;
+	margin-top: 2em;
+}
+
+h1 {
+	margin-top: 1em;
+	font-family: trade-gothic-next, sans-serif;
+	font-weight: 700;
 	font-style: normal;
 }
