@@ -2,10 +2,8 @@
 @media only screen and (min-width: 480px) {
 /* a text decoration on all links */
 	.img-logo {
-		margin-bottom: -2.9em;
-		margin-left: -65em;
+		margin-bottom: -1em;
 	}
-	
 	a {
 	text-decoration: none;
 	color: white;
@@ -24,13 +22,12 @@ body {
 .menu-navbar {
 	background-color: deepskyblue;
 	padding-top: 0.2em;
-	padding-bottom: 0.2em;
-	margin-top: -1.1em;
+	padding-bottom: 1em;
 }
 
 .navbar {
 	list-style-type: none;
-	text-align: end;
+	text-align: center;
 	margin-right: 4em;
 }
 	
@@ -43,6 +40,7 @@ body {
 	font-style: normal;
 }
 
+	
 /* FORMULARIO DE ENVIO */
 .upload {
 	display: inline-block;
