@@ -1,6 +1,29 @@
 @charset "utf-8";
-/* CSS Document */
+/* a text decoration on all links */
 a {
 	text-decoration: none;
-	
+	color: white;
+}
+
+.menu-navbar {
+	margin-top: -0.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-right: 5em;
+	margin-left: -0.5em;
+	margin-right: -0.5em;
+	background-color: deepskyblue;
+}
+
+.navbar {
+	list-style-type: none;
+	margin: 0 auto;
+	text-align: end;
+}
+
+.navbar li {
+	display: inline-block;
+	margin-left: 3em;
+	font-size: 14pt;
+	font-family: 
 }
