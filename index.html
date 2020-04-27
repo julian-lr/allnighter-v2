@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>index</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://use.typekit.net/pbk1pdf.css">
+	<meta charset="utf-8">
+	<title>index</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://use.typekit.net/pbk1pdf.css">
 	<link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
@@ -13,144 +13,101 @@
 			<div class="menu-navbar">
 				<img src="allnighter-logo.png" alt="allnighter" id="img-logo"/>
 			</div>	
-	</div>
-				<h1>¡Bienvenidx a AllNighter!</h1>
+		</div>
+		<h1>¡Bienvenidx a AllNighter!</h1>
 		<h2>Ten&eacute;s un l&iacute;mite de hasta 10 archivos para testear en simult&aacute;neo.</h2>
-	<div class="form-upload">
-		<form class="upload" >
-			<input type="file"  class="btn" id="btn" multiple>
-			
-		</form>
+		<div class="form-upload">
+			<form class="upload" >
+				<input type="file"  class="btn" id="btn" multiple>	
+			</form>
+		</div>
 	</div>
-</div>
 	<div id="outdiv">
 	<div id="console">
 	</div></div>
 	
 	<div class="footer">
-	<p>Este sitio web ha sido construido por Lucas Salmer&oacute;n y Juli&aacute;n Laurito.<br><a href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=238334881-9e931d32-3cf0-4d2e-ba21-4c6ef7244d29" class="footer-link">Invitanos una birra &hearts;</a></p>
+		<p>Este sitio web ha sido construido por Lucas Salmer&oacute;n y Juli&aacute;n Laurito.<br><a href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=238334881-9e931d32-3cf0-4d2e-ba21-4c6ef7244d29" class="footer-link">Invitanos una birra &hearts;</a></p>
 	</div>
 <script>
-var namef = ["", "", "","", "", "","", "", "",""];
-	
-	
+	var namef = ["", "", "","", "", "","", "", "",""];
 	var a = 0;
+
 	function StartOP(e) {
 		a=0;
-	
-		 var div = document.getElementById("console"); 
+		var div = document.getElementById("console"); 
 
 		while (div.firstChild) {
-    div.removeChild(div.firstChild);
-}
-           
+			div.removeChild(div.firstChild);
+		}
+			
 		for(var i = 0; i<e.target.files.length;i++){
 			namef[i] = e.target.files[i].name;
 		}
-		
 
 		var tag;
 		var text;
 		var element;
+			
+		for(var i = 0; i < e.target.files.length;i++){
+			var reader = new FileReader();
+
+			reader.onloadend = function(e) {
+				var contents = reader.result;
+				displayContents(contents);
+			};
+
+			reader.readAsText(e.target.files[i]);
+		}	
+	}
+
+	function checkForm( thetxt )
+	{
+		var withoutEnter = thetxt.replace(/\r?\n|\r/g, '');
+		var result = withoutEnter.match(/[^a-zA-Z0-9 ↵;]/g);
+
+		return result;
+	}
 		
-		
-		
- /* if (!file) {
-	  tag = document.createElement("p");
-       text = document.createTextNode("FALLO AL ABRIR ARCHIVO");
-       tag.appendChild(text);
-	   tag.className = "line-1 anim-typewriter";
-       element = document.getElementById("console");
-       element.appendChild(tag);
-    return;
-	  
-  }*/
-		
-		
-	for(var i = 0; i < e.target.files.length;i++){
-/*	tag = document.createElement("p");
-       text = document.createTextNode("NOMBRE DE ARCHIVO: " +e.target.files[i].name);
-       tag.appendChild(text);
-       element = document.getElementById("console");
-       element.appendChild(tag);
-		*/
-	
-	var reader = new FileReader();
-  reader.onloadend = function(e) {
-    var contents = e.target.result;
-    displayContents(contents);
-  };
-	
-	  reader.readAsText(e.target.files[i]);
-  }	
-		
-		
-  
-  
- 
-  
-		
-		
-}
-	
-	function displayContents(contents) {
-		
+	function displayContents(contents) {	
 		var texto = contents;
 		var tag;
-   var text;
-   var element;
-		
-		
+		var text;
+		var element;
 		var name = namef[a];
 		a++;
-		if(texto.includes('�')){
+
+		if(checkForm(contents)){
 			var result = "";
 			var lines = [];
-			lines = texto.split("\r\n");
+			lines = texto.split(/\s+/);
 			var element = document.getElementById('demo');
-			
-for(var linea = 0;linea < lines.length;linea++){
-	
-	for(var puesto = 0;puesto < lines[linea].length;puesto++){
-	if(lines[linea].charAt(puesto)== '�'){
-		
-	   result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+"- PUESTO: "+(puesto+1).toString()+'\n';
-	    tag = document.createElement("p");
-		tag.className = "line-1 anim-typewriter";
-       text = document.createTextNode(result);
-       tag.appendChild(text);
-       element = document.getElementById("console");
-       element.appendChild(tag);
-	   }
-	
-}
-	
-}
-		/*	var element = document.getElementById('demo');
-  element.textContent += result;
-			
-		*/	
-		}else{
-			
-			tag = document.createElement("p");
-       text = document.createTextNode("ARCHIVO: "+name+ " - NO CONTIENE CARACTERES ESPECIALES");
-       tag.appendChild(text);
-       element = document.getElementById("console");
-		tag.className = "line-1 anim-typewriter";
-       element.appendChild(tag);
-		}
-		
-		
-		
-}
-	
 
-document.getElementById('btn')
-  .addEventListener('change', StartOP, false);
-		
-	
-	
-	
+			for(var linea = 0;linea < lines.length;linea++){
+				for(var puesto = 0;puesto < lines[linea].length;puesto++){
+					if(lines[linea].charAt(puesto).match(/[^a-zA-Z0-9↵;]/g) !== null){
+						result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+"- PUESTO: "+(puesto+1).toString()+'\n';
+						tag = document.createElement("p");
+						tag.className = "line-1 anim-typewriter";
+						text = document.createTextNode(result);
+						tag.appendChild(text);
+						element = document.getElementById("console");
+						element.appendChild(tag);
+					}
+				}
+			}
+		}else{
+			tag = document.createElement("p");
+			text = document.createTextNode("ARCHIVO: "+name+ " - NO CONTIENE CARACTERES ESPECIALES");
+			tag.appendChild(text);
+			element = document.getElementById("console");
+			tag.className = "line-1 anim-typewriter";
+			element.appendChild(tag);
+		}		
+	}
+
+	document.getElementById('btn')
+	.addEventListener('change', StartOP, false);
 </script>
 
 </body>
