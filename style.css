@@ -7,13 +7,8 @@
 	transition: 0.3s;
 }
 
-		.footer-link {
-	text-decoration: none;
-	color: #333;
-}
-			.footer-link:hover {
-	text-decoration: none;
-	color: #2E2E2E;
+		.footer-names {
+	margin-bottom: -0.2em;
 }
 	
 	#img-logo {
@@ -216,29 +211,7 @@ body {
 	padding-bottom: 0.2em;
 }
 
-	/*
-.navbar {
-	list-style-type: none;
-	text-align: end;
-	margin-top: -2.6em;
-	padding-bottom: 0.2em;
-}
-	
-.navbar li {
-	display: inline-block;
-	font-size: 14pt;
-	font-family: trade-gothic-next, sans-serif;
-	font-weight: 400;
-	font-style: normal;
-}
 
-	.storage-nav {
-		margin-right: 4em;
-	}
-	.start-nav {
-		margin-right: 2em;
-	}
-	*/
 	
 /* FORMULARIO DE ENVIO */
 .upload {
