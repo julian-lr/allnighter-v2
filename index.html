@@ -64,7 +64,7 @@
 	function checkForm( thetxt )
 	{
 		var withoutEnter = thetxt.replace(/\r?\n|\r/g, '');
-		var result = withoutEnter.match(/[ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™´’‘]/g);
+		var result = withoutEnter.match(/['ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™´’‘]/g);
 
 		return result;
 	}
