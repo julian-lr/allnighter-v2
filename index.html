@@ -2,13 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>AllNighter</title>
-	<meta name="description" content="Analizador de HTML para detectar caracteres especiales cr&iacute;ticos">
+	<title>index</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://use.typekit.net/pbk1pdf.css">
 	<link rel="icon" href="favicon.png" type="image/png">
-	<meta name="keywords" content="HTML,Wunderman,Thompson,AllNighter">
-	<meta name="author" content="Julian Moreira y Julian Laurito">
 </head>
 <body>
 	<div class="container">
@@ -30,12 +27,7 @@
 	</div></div>
 	
 	<div class="footer">
-		<p class="footer-names">Este sitio web ha sido construido por Juli&aacute;n Moreira y Juli&aacute;n Laurito.</p>
-		<a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=238334881-9e931d32-3cf0-4d2e-ba21-4c6ef7244d29" name="MP-payButton" class="blue-ar-l-rn-none">Invitanos una birra</a>
-<script type="text/javascript">
-(function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
-</script>
-
+		<p>Este sitio web ha sido construido por Lucas Salmer&oacute;n y Juli&aacute;n Laurito.<br><a href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=238334881-9e931d32-3cf0-4d2e-ba21-4c6ef7244d29" class="footer-link">Invitanos una birra &hearts;</a></p>
 	</div>
 <script>
 	var namef = ["", "", "","", "", "","", "", "",""];
@@ -72,7 +64,7 @@
 	function checkForm( thetxt )
 	{
 		var withoutEnter = thetxt.replace(/\r?\n|\r/g, '');
-		var result = withoutEnter.match(/[ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™]/g);
+		var result = withoutEnter.match(/[ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™´’‘]/g);
 
 		return result;
 	}
@@ -93,7 +85,7 @@
 
 			for(var linea = 0;linea < lines.length;linea++){
 				for(var puesto = 0;puesto < lines[linea].length;puesto++){
-					if(lines[linea].charAt(puesto).match(/[ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™]/g) !== null){
+					if(lines[linea].charAt(puesto).match(/[ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™´’‘]/g) !== null){
 						result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+"- PUESTO: "+(puesto+1).toString()+'\n';
 						tag = document.createElement("p");
 						tag.className = "line-1 anim-typewriter";
