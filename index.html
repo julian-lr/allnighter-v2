@@ -85,7 +85,7 @@
 
 			for(var linea = 0;linea < lines.length;linea++){
 				for(var puesto = 0;puesto < lines[linea].length;puesto++){
-					if(lines[linea].charAt(puesto).match(/[ÁÉÍÓÜÚáéíóüúÑñ–—€®©℠™´’‘]/g) !== null){
+					if(lines[linea].charAt(puesto).match(/[ÁÉÍÓÜÚáéí'óüúÑñ–—€®©℠™´’‘]/g) !== null){
 						result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+"- PUESTO: "+(puesto+1).toString()+'\n';
 						tag = document.createElement("p");
 						tag.className = "line-1 anim-typewriter";
