@@ -3,10 +3,10 @@
 /* a text decoration on all links */
 	a {
 	text-decoration: none;
-	color: white;
+	color: black;
 	transition: 0.3s;
 }
-
+	
 		.footer-link {
 	text-decoration: none;
 	color: #333;
@@ -16,9 +16,27 @@
 	color: #2E2E2E;
 }
 	
+	.under-form {
+		font-family: trade-gothic-next, sans-serif;
+		font-size: 12px;
+		font-weight: 700;
+	}
+	
+	.container-text {
+		max-width: 100%;
+
+	}
+	.nav-text {
+		 	font-size: 12pt;
+			font-family: trade-gothic-next, sans-serif;
+			font-style: normal;
+			margin-left: 85%;
+			font-weight: 400;
+ 			cursor: pointer;
+	}
 	#img-logo {
-	margin-top: 0.5em;
 	width: 50px;	
+				vertical-align: middle;
 	}
 	
 a:hover {

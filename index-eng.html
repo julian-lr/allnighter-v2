@@ -12,24 +12,24 @@
 		<div class="menu-container">
 			<div class="menu-navbar">
 				<p class="container-text"><img src="allnighter-logo.png" alt="allnighter" id="img-logo"/>
-					<a class="nav-text" alt="English site" href="index-eng.html">English</a></p>
+					<a class="nav-text" alt="Spanish site" href="index.html">Español</a></p>
 			</div>	
 		</div>
-		<h1>¡Bienvenidx a AllNighter!</h1>
+		<h1>Welcome to AllNighter!</h1>
 		<h2></h2>
 		<div class="form-upload">
 			<form class="upload" >
-				<input type="file" class="btn" id="btn" alt="Subir archivos" multiple>	
+				<input type="file" class="btn" id="btn" alt="Upload files" multiple>	
 			</form>
 		</div>
-		<a href="informacion-importante.html" target="_blank"><p class="under-form">Información importante</p></a>
+		<a href="important-information.html" target="_blank"><p class="under-form">Important information</p></a>
 	</div>
 	<div id="outdiv">
 	<div id="console">
 	</div></div>
 	
 	<div class="footer">
-		<p>Este sitio web ha sido construido por Juli&aacute;n Moreira y Juli&aacute;n Laurito.</p>
+		<p>This site was built by Juli&aacute;n Moreira and Juli&aacute;n Laurito.</p>
 	</div>
 <script>
 	var namef = ["", "", "","", "", "","", "", "",""];
@@ -88,7 +88,7 @@
 			for(var linea = 0;linea < lines.length;linea++){
 				for(var puesto = 0;puesto < lines[linea].length;puesto++){
 					if(lines[linea].charAt(puesto).match(/[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´’‘]/g) !== null){
-						result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+" - PUESTO: "+(puesto+1).toString()+'\n';
+						result = "FILE: "+name+":    LINE: "+ (linea+1).toString()+" - CHARACTER: "+(puesto+1).toString()+'\n';
 						tag = document.createElement("p");
 						tag.className = "line-1 anim-typewriter";
 						text = document.createTextNode(result);
@@ -100,7 +100,7 @@
 			}
 		}else{
 			tag = document.createElement("p");
-			text = document.createTextNode("ARCHIVO: "+name+ " - NO CONTIENE CARACTERES ESPECIALES");
+			text = document.createTextNode("FILE: "+name+ " - HAS NO SPECIAL CHARACTERS");
 			tag.appendChild(text);
 			element = document.getElementById("console");
 			tag.className = "line-1 anim-typewriter";
