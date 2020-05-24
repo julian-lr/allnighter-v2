@@ -12,6 +12,21 @@
 		<!-- Ya se que el bot&oacute;n de ir a espa&ntilde; dice go-eng. me dio paja cambiarlo-->
 		<td><a href="esp.html" class="go-eng">Ir a Español</a></td><td><img src="AN-logo.png" class="logo-2" alt="AllNighter logo"/></td>
 		</table>
+	<script>
+	(function (){
+  'use strict';
+ 
+  var eng = document.querySelector('.go-eng')
+ 
+  function setLocalStorage(){
+     eng.addEventListener('click', () => {
+      localStorage.setItem('locale','es')
+    })
+  }
+  setLocalStorage()
+ 
+	}());
+	</script>
 	<h1 class="header-info">Pick your file and, in seconds, you&#39;ll see the results in the console.</h1>
 	<table class="form-upload">
 		<td>

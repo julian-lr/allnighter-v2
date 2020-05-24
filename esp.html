@@ -11,6 +11,21 @@
 	<table class="nav">
 		<td><a href="eng.html" class="go-eng">Go to English</a></td><td><img src="AN-logo.png" class="logo-2" alt="AllNighter logo"/></td>
 		</table>
+	<script>
+	(function (){
+  'use strict';
+ 
+  var eng = document.querySelector('.go-eng')
+ 
+  function setLocalStorage(){
+     eng.addEventListener('click', () => {
+      localStorage.setItem('locale','en')
+    })
+  }
+  setLocalStorage()
+ 
+	}());
+	</script>
 	<h1 class="header-info">Eleg&iacute; el archivo a analizar y, en segundos, vas a ver el resultado en la consola.</h1>
 	<table class="form-upload">
 		<td>
