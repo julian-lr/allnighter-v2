@@ -48,7 +48,7 @@ a:hover {
   text-shadow: 1px 1px #E3E3E3;
   font-weight: 400;
   font-size: 12pt;
-			font-family: trade-gothic-next, sans-serif;
+	font-family: trade-gothic-next, sans-serif;
 			font-style: normal;
 		
 	}
@@ -93,14 +93,14 @@ a:hover {
 	
 	.footer {
 		margin-top: 5em;
-		font-family: tgn-soft-round-con, sans-serif;
-
-font-weight: 700;
-
+font-family: tgn-soft-round-con, sans-serif;
+font-style: normal;
+font-weight: 400;
 font-style: normal;
 	}
 	
 }
+
 @keyframes typewriter{
   from{width: 0;}
   to{width: 97%;}
@@ -126,8 +126,9 @@ font-style: normal;
 		margin-left: 1em;
 		margin-top: 2em;
 		font-size: 2em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
-		font-weight: bold;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 		position:relative;
     left: -500px;
@@ -142,8 +143,9 @@ font-style: normal;
 		margin-left: 1em;
 		margin-top: -2.5em;
 		font-size: 2em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
-		font-weight: bold;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 		position: relative;
     left: -500px;
@@ -169,7 +171,9 @@ font-style: normal;
 		text-align: center;
 		margin: auto;
 		font-size: 1.2em;
-		font-family: "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 	}
 
@@ -190,8 +194,9 @@ font-style: normal;
 	}
 
 	.go-eng {
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		margin-left: 1em;
 	}
 	
@@ -200,8 +205,9 @@ font-style: normal;
 		margin-left: 2.5em;
 		margin-top: 1em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		font-size: 1em;
 		position: absolute;
     left: -500px;
@@ -215,8 +221,9 @@ font-style: normal;
 		margin-left: 2.5em;
 		margin-top: 1em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		font-size: 1em;
 	position: absolute;
     left: -500px;
@@ -232,7 +239,9 @@ font-style: normal;
 		text-align: center;
 		margin: auto;
 		font-size: 2em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		margin-bottom: 10em;
 		opacity: 0;
 		animation: fadeInUp 1s ease-in-out 0s forwards;
@@ -255,7 +264,9 @@ font-style: normal;
 
 	.footer-2 {
 		color: white;
-		font-family: "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		width: 100%;
 		text-align: center;
 	}
@@ -291,8 +302,9 @@ font-style: normal;
 		margin-left: 1em;
 		margin-top: 2em;
 		font-size: 1.5em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
-		font-weight: bold;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 		position:relative;
     left: -500px;
@@ -307,8 +319,9 @@ font-style: normal;
 		margin-left: 1em;
 		margin-top: -3.5em;
 		font-size: 1.5em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
-		font-weight: bold;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 		position: relative;
     left: -500px;
@@ -342,8 +355,9 @@ font-style: normal;
 		width: 100%;
 	}
 	.go-eng {
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		margin-left: 1em;
 	}
 .header-info {
@@ -352,7 +366,9 @@ font-style: normal;
 		text-align: center;
 		margin: auto;
 		font-size: 1em;
-		font-family: "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 	}
 
@@ -361,8 +377,9 @@ font-style: normal;
 		margin-left: 2.5em;
 		margin-top: -1em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		font-size: 1em;
 		position: absolute;
     left: -500px;
@@ -376,8 +393,9 @@ font-style: normal;
 		margin-left: 2.5em;
 		margin-top: -1em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		font-size: 1em;
 	position: absolute;
     left: -500px;
@@ -394,7 +412,9 @@ font-style: normal;
 		text-align: center;
 		margin: auto;
 		font-size: 1.2em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		margin-bottom: 9em;
 		opacity: 0;
 		animation: fadeInUp 1s ease-in-out 0s forwards;
@@ -417,7 +437,9 @@ font-style: normal;
 	
 	.footer-2 {
 		color: white;
-		font-family: "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		width: 100%;
 		text-align: center;
 		font-size: 0.8em;
@@ -451,8 +473,9 @@ font-style: normal;
 		margin-left: 1em;
 		margin-top: 2em;
 		font-size: 1em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
-		font-weight: bold;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 		position:relative;
     left: -500px;
@@ -467,8 +490,9 @@ font-style: normal;
 		margin-left: 1em;
 		margin-top: -5.7em;
 		font-size: 1em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
-		font-weight: bold;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 		position: relative;
 			margin-bottom: -4.5em;
@@ -502,8 +526,9 @@ font-style: normal;
 	}
 
 	.go-eng {
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		margin-left: 1em;
 	}
 .header-info {
@@ -512,7 +537,9 @@ font-style: normal;
 		text-align: center;
 		margin: auto;
 		font-size: 1em;
-		font-family: "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		color: white;
 	
 	}
@@ -523,8 +550,9 @@ font-style: normal;
 		margin-left: 1.5em;
 		margin-top: 1em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		font-size: 1em;
 		position: absolute;
     left: -500px;
@@ -538,8 +566,9 @@ font-style: normal;
 		margin-left: 1.5em;
 		margin-top: 1em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
-		font-weight: 600;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		font-size: 1em;
 	position: absolute;
     left: -500px;
@@ -556,7 +585,9 @@ font-style: normal;
 		text-align: center;
 		margin: 0 auto;
 		font-size: 1.7em;
-		font-family: "PoynterGothicText Black", "PoynterGothicText Light", "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
 		margin-bottom: 9em;
 		opacity: 0;
 		animation: fadeInUp 1s ease-in-out 0s forwards;
@@ -580,7 +611,9 @@ font-style: normal;
 	.footer-2 {
 		margin-top: 25em;
 		color: white;
-		font-family: "PoynterGothicText Regular";
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
 		width: 100%;
 		text-align: center;
 		font-size: 0.7em;
