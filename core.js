@@ -19,7 +19,8 @@ var esp = document.querySelector('.esp')
 	
 //RECIBE QUE "LOCALE" TIENE Y REDIRECCIONA
 		const locale = localStorage.getItem('locale');
-		var siteUrl = window.location.host;
+		var getUrl = window.location;
+		var siteUrl = getUrl .protocol + "//" + getUrl.host;
 		const actualUrl = window.location.href;
 		var urlEsp = siteUrl + "/esp.html";
 		console.log("urlEsp", urlEsp);
