@@ -20,11 +20,11 @@ var esp = document.querySelector('.esp')
 //RECIBE QUE "LOCALE" TIENE Y REDIRECCIONA
 		const locale = localStorage.getItem('locale');
 		var getUrl = window.location;
-		var siteUrl = getUrl .protocol + "//" + getUrl.host;
+		var siteUrl = getUrl .protocol + "//" + getUrl.host + "/";
 		const actualUrl = window.location.href;
-		var urlEsp = siteUrl + "/esp.html";
+		var urlEsp = siteUrl + "esp.html";
 		console.log("urlEsp", urlEsp);
-		var urlEng = siteUrl + "/eng.html";
+		var urlEng = siteUrl + "eng.html";
 		var urlIndex =  siteUrl;
 		console.log("actualUrl",window.location.href);
 		if (locale === 'en' && actualUrl === urlIndex) window.location.href = urlEng;
