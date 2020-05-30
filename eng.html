@@ -1,6 +1,6 @@
-<!doctype html>
+<!doctype HTML>
 <html>
-<head>
+<head lang="en">
 	<meta charset="utf-8">
 	<title>AllNighter</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
@@ -9,24 +9,8 @@
 </head>
 <body class="body-2">
 <table class="nav">
-		<!-- Ya se que el bot&oacute;n de ir a espa&ntilde; dice go-eng. me dio paja cambiarlo-->
-		<td><a href="esp.html" class="go-eng">Ir a Español</a></td><td><img src="AN-logo.png" class="logo-2" alt="AllNighter logo"/></td>
+		<td><a href="esp.html" class="esp" id="go-eng">Ir a Español</a></td><td><img src="AN-logo.png" class="eng" id="logo-2" alt="AllNighter logo"/></td>
 		</table>
-	<script>
-	(function (){
-  'use strict';
- 
-  var eng = document.querySelector('.go-eng')
- 
-  function setLocalStorage(){
-     eng.addEventListener('click', () => {
-      localStorage.setItem('locale','es')
-    })
-  }
-  setLocalStorage()
- 
-	}());
-	</script>
 	<h1 class="header-info">Pick your file and, in seconds, you&#39;ll see the results in the console.</h1>
 	<table class="form-upload">
 		<td>
@@ -117,6 +101,7 @@
 	document.getElementById('btn')
 	.addEventListener('change', StartOP, false);
 </script>
+	<script src="core.js" defer></script>
 <p class="footer-2">This project was made by <a href="https://www.instagram.com/itu_ph">Juli&aacute;n Laurito</a> and Juli&aacute;n Moreira</p>
 </body>
 </html>

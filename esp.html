@@ -1,6 +1,6 @@
-<!doctype html>
+<!doctype HTML>
 <html>
-<head>
+<head lang="es">
 	<meta charset="utf-8">
 	<title>AllNighter</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
@@ -9,23 +9,8 @@
 </head>
 <body class="body-2">
 	<table class="nav">
-		<td><a href="eng.html" class="go-eng">Go to English</a></td><td><img src="AN-logo.png" class="logo-2" alt="AllNighter logo"/></td>
+		<td><a href="eng.html" class="eng" id="go-eng">Go to English</a></td><td><img src="AN-logo.png" class="esp" id="logo-2" alt="AllNighter logo"/></td>
 		</table>
-	<script>
-	(function (){
-  'use strict';
- 
-  var eng = document.querySelector('.go-eng')
- 
-  function setLocalStorage(){
-     eng.addEventListener('click', () => {
-      localStorage.setItem('locale','en')
-    })
-  }
-  setLocalStorage()
- 
-	}());
-	</script>
 	<h1 class="header-info">Eleg&iacute; el archivo a analizar y, en segundos, vas a ver el resultado en la consola.</h1>
 	<table class="form-upload">
 		<td>
@@ -122,6 +107,7 @@
 }
 for ( td of document.querySelectorAll('td[text="male"]') )
   console.debug("male:", td, td.innerText)</script>
+	<script src="core.js" defer></script>
 	<p class="footer-2">Este proyecto fue ideado por <a href="https://www.instagram.com/itu_ph">Juli&aacute;n Laurito</a> y Juli&aacute;n Moreira</p>
 	</body>
 </html>

@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!doctype HTML>
+<html lang="es" >
 <head>
 <meta charset="utf-8">
 <title>AllNighter</title>
@@ -9,7 +9,7 @@
 </head>
 <body class="body">
 		<table class="nav">
-		<td><h1 class="title">&#33;Bienvenido a AllNighter!</h1><h1 class="title-2">Welcome to AllNighter!</h1></td><td><img src="AN-logo.png" class="logo" alt="AllNighter logo"/></td>
+		<td><h1 class="title">&#33;Bienvenido a AllNighter!</h1><h1 class="title-2">Welcome to AllNighter!</h1></td><td><img src="AN-logo.png" id="logo" alt="AllNighter logo"/></td>
 		</table>
 	<h2 class="language">Por favor, eleg&iacute; un idioma.</h2><br><h2 class="language-2">Please, select a language.</h2>
 	<table class="selector">
@@ -18,34 +18,8 @@
 			<td class="eng"><a href="eng.html">English</a></td>
 		</tr>
 	</table>
-	<script>
-	(function (){
-  'use strict';
- 
-  var eng = document.querySelector('.eng')
- 
-  function setLocalStorage(){
-     eng.addEventListener('click', () => {
-      localStorage.setItem('locale','en')
-    })
-  }
-  setLocalStorage()
- 
-}());
-		(function (){
-  'use strict';
- 
-  var esp = document.querySelector('.esp')
- 
-  function setLocalStorage(){
-     esp.addEventListener('click', () => {
-      localStorage.setItem('locale','es')
-    })
-  }
-  setLocalStorage()
- 
-}());
-		(function () {
+	<!--<script>
+	(function () {
   'use strict';
 
   const locale = localStorage.getItem('locale');
@@ -58,7 +32,6 @@
 
   } else {
     // first visit:
-
     document
       .querySelector('.eng')
       .addEventListener('click', () => {
@@ -72,8 +45,8 @@
       });    
   }
 
-}());
-	</script>
+}());</script>-->
+	<script src="core.js" defer></script>
 	<p class="footer-2">Este proyecto fue ideado por <a href="https://www.instagram.com/itu_ph">Juli&aacute;n Laurito</a> y Juli&aacute;n Moreira</p>
 </body>
 </html>

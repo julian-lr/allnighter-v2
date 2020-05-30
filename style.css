@@ -177,13 +177,13 @@ font-style: normal;
 		color: white;
 	}
 
-	.logo {
+	#logo {
 		max-width: 100px;
 		margin-top: -2em;
 		
 	}
 	
-	.logo-2 {
+	#logo-2 {
 	max-width: 100px;
 		margin-top: 2em;
 		margin-right: -5em;
@@ -193,7 +193,7 @@ font-style: normal;
 		width: 100%;
 	}
 
-	.go-eng {
+	#go-eng {
 		font-family: trade-gothic-next, sans-serif;
 		font-weight: 400;
 		font-style: normal;
@@ -340,12 +340,12 @@ font-style: normal;
     100% { left: 0; }
 }
 
-	.logo {
-		max-width: 50px;
+	#logo {
+		max-width: 80px;
 		margin-top: -2em;
 	}
 	
-	.logo-2 {
+	#logo-2 {
 	max-width: 100px;
 		margin-top: 2em;
 		margin-right: -3.6em;
@@ -354,7 +354,7 @@ font-style: normal;
 	.nav {
 		width: 100%;
 	}
-	.go-eng {
+	#go-eng {
 		font-family: trade-gothic-next, sans-serif;
 		font-weight: 400;
 		font-style: normal;
@@ -411,7 +411,7 @@ font-style: normal;
 		width: 60%;
 		text-align: center;
 		margin: auto;
-		font-size: 1.2em;
+		font-size: 1.4em;
 		font-family: trade-gothic-next, sans-serif;
 		font-weight: 700;
 		font-style: normal;
@@ -512,11 +512,12 @@ font-style: normal;
     100% { left: 0; }
 }
 	
-	.logo {
+	#logo {
 		max-width: 70px;
-		margin-top: -2em;
+		margin-top: 1em;
+		margin-bottom: -1em;
 	}
-	.logo-2 {
+	#logo-2 {
 	max-width: 100px;
 		margin-top: 2em;
 		margin-right: -2em;
@@ -525,7 +526,7 @@ font-style: normal;
 		width: 100%;
 	}
 
-	.go-eng {
+	#go-eng {
 		font-family: trade-gothic-next, sans-serif;
 		font-weight: 700;
 		font-style: normal;
@@ -584,7 +585,7 @@ font-style: normal;
 		width: 90%;
 		text-align: center;
 		margin: 0 auto;
-		font-size: 1.7em;
+		font-size: 1.4em;
 		font-family: trade-gothic-next, sans-serif;
 		font-weight: 700;
 		font-style: normal;
