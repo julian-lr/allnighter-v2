@@ -9,4 +9,6 @@ El folder consiste de:
 El unico JS que no esta en core.js es porque nunca pude traspasarlo del <script> en html.
 
   
+  
+  
 El proyecto fue ideado y creado originalmente por Julián Laurito y Lucas Salmerón, y posteriormente refinado por Julián Moreira.
