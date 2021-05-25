@@ -7,3 +7,6 @@ El folder consiste de:
 - Un JS encargado exclusivamente de leer el locale y asignarle el valor elegido (es o en).
 
 El unico JS que no esta en core.js es porque nunca pude traspasarlo del <script> en html.
+
+  
+El proyecto fue ideado y creado originalmente por Julián Laurito y Lucas Salmerón, y posteriormente refinado por Julián Moreira.
