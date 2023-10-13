@@ -1,0 +1,46 @@
+// @use calls
+@use "../abstracts/" as *;
+
+// @include calls for keyframes
+@include keyframe-typewriter;
+@include keyframe-blinkTextCursor;
+
+// Container div adjustments
+#outdiv {
+	width: 100%;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+// Console styling
+#console {
+	background-color: #333;
+	width: 90%;
+	margin: 0 auto;
+	padding: 1em;
+	height: auto;
+	min-height: 600px;
+	border-radius: 5px;
+	background-image: url("../../img/white-lines.png");
+	background-size:46px;
+}
+
+// Line styling
+.line-1{
+    position: relative;
+	margin-left: 1em;
+	border-right: 1px solid rgba(255,255,255,.75);
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+	font-family: "SF Mono", "Courier New", "monospace";
+	font-size: 14px;
+	color: white;
+	letter-spacing: .05em;
+}
+
+
+// Animation for typewriter effect in console styled interface
+.anim-typewriter {
+    @include animation-typewriterblink;
+}

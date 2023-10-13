@@ -1,0 +1,24 @@
+// @use calls
+@use "../abstracts/" as *;
+
+// @include calls for keyframes
+@include keyframe-slide-left;
+@include keyframe-slide-right;
+@include keyframe-slide-up;
+@include keyframe-slide-up-delay;
+
+// Adding animations to the H2s and flags
+.maincontainer {
+    .esh2 {
+        @include animation-slide-right;
+    }
+    .enh2 {
+        @include animation-slide-left;
+    }
+    &__es {
+        @include animation-slide-up;
+    }
+    &__en {
+        @include animation-slide-up-delay;
+    }
+}

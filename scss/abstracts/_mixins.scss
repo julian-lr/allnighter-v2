@@ -1,0 +1,103 @@
+// Keyframes animation left-to-right
+@mixin keyframe-slide-right {
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+// Keyframes animation right-to-left
+@mixin keyframe-slide-left {
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+// Keyframes animation slide up
+@mixin keyframe-slide-up {
+  @keyframes slideUp {
+    0% {
+      transform: translateY(1000%);
+    }
+    75% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+}
+
+// Keyframes animation slide up with delay
+@mixin keyframe-slide-up-delay {
+  @keyframes slideUpDelay {
+    0% {
+      transform: translateY(1000%);
+    }
+    75% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+}
+
+// Animation left-to-right
+@mixin animation-slide-right {
+  animation: 0.25s ease-in 0s 1 slideRight;
+}
+
+// Animation right-to-left
+@mixin animation-slide-left {
+  animation: 0.25s ease-in 0s 1 slideLeft;
+}
+
+// Animation up
+@mixin animation-slide-up {
+  animation: 0.35s ease-in 0s 1 slideUp;
+}
+
+// Animation up delayed
+@mixin animation-slide-up-delay {
+  animation: 0.45s ease-in 0s 1 slideUpDelay;
+}
+
+//==========================================================
+
+// Console styled interface animations
+@mixin keyframe-typewriter {
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 97%;
+    }
+  }
+}
+@mixin keyframe-blinkTextCursor {
+  @keyframes blinkTextCursor {
+    from {
+      border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+      border-right-color: transparent;
+    }
+  }
+}
+
+// Animation for typewriter + blinkTextCursor
+@mixin animation-typewriterblink {
+  animation: typewriter 7s steps(140) 1s 1 normal both,
+    blinkTextCursor 500ms steps(44) infinite normal;
+}

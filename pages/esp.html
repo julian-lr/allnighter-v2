@@ -1,113 +1,56 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
-<head lang="es">
-	<meta charset="utf-8">
-	<title>AllNighter</title>
-	<link href="style.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://use.typekit.net/oux8vri.css">
-	<link rel="icon" href="favicon.png" type="image/png">
-</head>
-<body class="body-2">
-	<table class="nav">
-		<td><a href="eng.html" class="eng" id="go-eng">Go to English</a></td><td><img src="AN-logo.png" class="esp" id="logo-2" alt="AllNighter logo"/></td>
-		</table>
-	<h1 class="header-info">Eleg&iacute; el archivo a analizar y, en segundos, vas a ver el resultado en la consola.</h1>
-	<table class="form-upload">
-		<td>
-			<form class="upload">
-				<input type="file" class="btn" id="btn" alt="Subir archivos" multiple>	
-			</form></td>
-		</table>
-	<div id="outdiv">
-	<div id="console">
-	</div></div>
-<script>
-	var namef = ["", "", "","", "", "","", "", "",""];
-	var a = 0;
-
-	function StartOP(e) {
-		a=0;
-		var div = document.getElementById("console"); 
-
-		while (div.firstChild) {
-			div.removeChild(div.firstChild);
-		}
-			
-		for(var i = 0; i<e.target.files.length;i++){
-			namef[i] = e.target.files[i].name;
-		}
-
-		var tag;
-		var text;
-		var element;
-			
-		for(var i = 0; i < e.target.files.length;i++){
-			var reader = new FileReader();
-
-			reader.onloadend = function(e) {
-				var contents = reader.result;
-				displayContents(contents);
-			};
-
-			reader.readAsText(e.target.files[i]);
-		}	
-	}
-
-	function checkForm( thetxt )
-	{
-		var withoutEnter = thetxt.replace(/\r?\n|\r/g, '');
-		var result = withoutEnter.match(/[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´’‘]/g);
-
-		return result;
-	}
-		
-	function displayContents(contents) {	
-		var texto = contents;
-		var tag;
-		var text;
-		var element;
-		var name = namef[a];
-		a++;
-
-		if(checkForm(contents)){
-			var result = "";
-			var lines = [];
-			lines = texto.split("\n");
-			var element = document.getElementById('demo');
-
-			for(var linea = 0;linea < lines.length;linea++){
-				for(var puesto = 0;puesto < lines[linea].length;puesto++){
-					if(lines[linea].charAt(puesto).match(/[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´’‘]/g) !== null){
-						result = "ARCHIVO: "+name+":    LINEA: "+ (linea+1).toString()+" - PUESTO: "+(puesto+1).toString()+'\n';
-						tag = document.createElement("p");
-						tag.className = "line-1 anim-typewriter";
-						text = document.createTextNode(result);
-						tag.appendChild(text);
-						element = document.getElementById("console");
-						element.appendChild(tag);
-					}
-				}
-			}
-		}else{
-			tag = document.createElement("p");
-			text = document.createTextNode("ARCHIVO: "+name+ " - NO CONTIENE CARACTERES ESPECIALES");
-			tag.appendChild(text);
-			element = document.getElementById("console");
-			tag.className = "line-1 anim-typewriter";
-			element.appendChild(tag);
-		}		
-	}
-
-	document.getElementById('btn')
-	.addEventListener('change', StartOP, false);
-</script>	
-	<script>for ( p of document.querySelectorAll('p') ) {
-  console.debug("text:", td, td.innerText)
-  td.setAttribute('text', td.innerText)
-}
-for ( td of document.querySelectorAll('td[text="male"]') )
-  console.debug("male:", td, td.innerText)</script>
-	<script src="core.js" defer></script>
-	<p class="footer-2">Este proyecto fue ideado por Juli&aacute;n "Itu" Laurito</p>
-	</body>
+  <head lang="es">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AllNighter</title>
+    <link rel="icon" href="../img/favicon.png" type="image/png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand me-auto" href="#">
+            <h1>Go to English version</h1>
+          </a>
+          <a class="navbar-brand ms-auto" href="#">
+            <img src="../img/AN-logo.png" alt="AllNighter" />
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main></main>
+    <h1 class="header-info">
+      Eleg&iacute; el archivo a analizar y, en segundos, vas a ver el resultado
+      en la consola.
+    </h1>
+    <table class="form-upload">
+      <td>
+        <form class="upload">
+          <input
+            type="file"
+            class="btn"
+            id="btn"
+            alt="Subir archivos"
+            multiple
+          />
+        </form>
+      </td>
+    </table>
+    <div id="outdiv">
+      <div id="console"></div>
+    </div>
+    <footer>
+      <p class="text-center">By<br />JLR - LSO - JM</p>
+    </footer>
+    <script src="../js/local-storage-redirect.js"></script>
+    <script src="../js/esp-logic.js"></script>
+  </body>
 </html>

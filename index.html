@@ -4,30 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AllNighter</title>
-    <link rel="stylesheet" href="https://use.typekit.net/pbk1pdf.css" />
     <link rel="icon" href="./img/favicon.png" type="image/png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <link href="./css/styles.css" rel="stylesheet" type="text/css" />
   </head>
-  <body class="body">
-    <table class="nav">
-      <td>
-        <h1 class="title">&#33;Bienvenido a AllNighter!</h1>
-        <h1 class="title-2">Welcome to AllNighter!</h1>
-      </td>
-      <td><img src="./img/AN-logo.png" id="logo" alt="AllNighter logo" /></td>
-    </table>
-    <h2 class="language">Por favor, eleg&iacute; un idioma.</h2>
-    <br />
-    <h2 class="language-2">Please, select a language.</h2>
-    <table class="selector">
-      <tr>
-        <td class="esp"><a href="./pages/esp.html">Espa&ntilde;ol</a></td>
-        <td class="eng"><a href="./pages/eng.html">English</a></td>
-      </tr>
-    </table>
-    <script src="./js/core.js" defer></script>
-    <p class="footer-2">
-      Este proyecto fue ideado por Juli&aacute;n "Itu" Laurito
-    </p>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand me-auto" href="#">
+            <h1>AllNighter</h1>
+          </a>
+          <a class="navbar-brand ms-auto" href="#">
+            <img src="./img/AN-logo.png" alt="AllNighter" />
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container text-center maincontainer">
+        <h2 class="maincontainer__h2 esh2">
+          Por favor, eleg&iacute; un idioma.
+        </h2>
+		<h2 class="maincontainer__h2 enh2">
+			Please, select a language.
+		  </h2>
+        <div class="row justify-content-center gy-3 p-3">
+          <div class="col-9 col-sm-6 maincontainer__es">
+            <a href="./pages/esp.html" class="es">
+              <img src="./img/ar.png" alt="AllNighter" />
+            </a>
+          </div>
+          <div class="col-9 col-sm-6 maincontainer__en">
+            <a href="./pages/eng.html" class="en">
+              <img src="./img/us.png" alt="AllNighter" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </main>
+    <footer>
+      <p class="text-center">By<br>JLR - LSO - JM</p>
+    </footer>
+    <script src="./js/local-storage-redirect.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
