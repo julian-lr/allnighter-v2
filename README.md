@@ -1,14 +1,12 @@
-# allnighter
+# AllNighter - v2 (ESP)
 
-El folder consiste de:
-- 3 PNGs que conforman el logo (an-logo), el favicon, y las white lines que aparecen en la consola.
-- Tres HTML, siendo uno la home page donde se elige el idioma (index), y dos paginas la tool dependiendo del idioma (eng o esp)
-- El respectivo stylesheet (style.css)
-- Un JS encargado exclusivamente de leer el locale y asignarle el valor elegido (es o en).
+Un mini proyecto de un QA con el fin de reducir errores en generación de contenido HTML en unos proyectos de e-mail marketing.
 
-El unico JS que no esta en core.js es porque nunca pude traspasarlo del <script> en html.
+El proyecto fue ideado y creado originalmente por Julián LR y Lucas Salmerón Olschansky, refinado por Julián Moreira, y ahora rediseñado por Julián LR, ownership actual del proyecto pertenece a @florencoro.
+<br><br>
 
-  
-  
-  
-El proyecto fue ideado y creado originalmente por Julián Laurito y Lucas Salmerón, y posteriormente refinado por Julián Moreira.
+# AllNighter - v2 (ENG)
+
+A small project made by a QA with the purpose of reducing errors in HTML content generation in a few e-mail marketing projects.
+
+Project was planned and made originally by Julián LR and Lucas Salmerón Olschansky, refined by Julián Moreira, and now redesigned by Julián LR, current ownership belongs to @florencoro.

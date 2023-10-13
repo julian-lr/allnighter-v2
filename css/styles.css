@@ -1,0 +1,643 @@
+/* BODY and HTML */
+.body {
+	background-image: linear-gradient(#53C4FF, #A774FF, #0D84C4);
+	background-repeat: no-repeat;
+	height: 100%;
+    background-attachment: fixed;
+	margin: 0;
+	overflow: hidden; 
+}
+
+.body-2 {
+	background-image: linear-gradient(#53C4FF, #A774FF, #0D84C4);
+	background-repeat: no-repeat;
+	height: 100%;
+    background-attachment: fixed;
+	margin: 0; 
+}
+
+html {
+    height: 100%;
+}
+
+a {
+	text-decoration: none;
+	color:white;
+	transition: 0.3s;
+}
+	
+a:hover {
+	text-decoration: none;
+	color:#B3B3B3;
+	transition: 0.3s;
+}
+
+.start {
+	margin-top: 2em;
+	padding: 0.5em;
+		padding-left: 1.5em;
+		padding-right: 1.5em;
+		display: inline-block;
+  background: white;
+  border: 1px solid #CFCFCF;
+  border-radius: 3px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #E3E3E3;
+  font-weight: 400;
+  font-size: 12pt;
+	font-family: trade-gothic-next, sans-serif;
+			font-style: normal;
+		
+	}
+
+	/* INTENTO CONSOLA */
+.line-1{
+    position: relative;
+	margin-left: 1em;
+	border-right: 1px solid rgba(255,255,255,.75);
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+	font-family: "Courier New", "monospace";
+	font-size: 14px;
+	color: white;
+	letter-spacing: .05em;
+}
+
+#outdiv {
+	width: 100%;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+#console {
+	background-color: #333;
+	width: 85%;
+	margin: 0 auto;
+	padding: 1em;
+	height: auto;
+	min-height: 600px;
+	border-radius: 5px;
+	background-image: url("white lines.png");
+	background-size:46px;
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 7s steps(140) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+	
+	.footer {
+		margin-top: 5em;
+font-family: tgn-soft-round-con, sans-serif;
+font-style: normal;
+font-weight: 400;
+font-style: normal;
+	}
+	
+}
+
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 97%;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 97%;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+
+/* DESKTOP BIG */
+@media (min-width: 630px){
+
+/* NAV-TITLE AND LOGO */
+	.title {
+		margin-left: 1em;
+		margin-top: 2em;
+		font-size: 2em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+		position:relative;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+}
+
+		.title-2 {
+		margin-left: 1em;
+		margin-top: -2.5em;
+		font-size: 2em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+		position: relative;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.2s;
+}
+	
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+	
+	.header-info {
+		padding-top: 4em;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+		font-size: 1.2em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+	}
+
+	#logo {
+		max-width: 100px;
+		margin-top: -2em;
+		
+	}
+	
+	#logo-2 {
+	max-width: 100px;
+		margin-top: 2em;
+		margin-right: -5em;
+	}
+	
+	.nav {
+		width: 100%;
+	}
+
+	#go-eng {
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		margin-left: 1em;
+	}
+	
+/* LANGUAGE AND CTA-SELECTOR */
+	.language {
+		margin-left: 2.5em;
+		margin-top: 1em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1em;
+		position: absolute;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.4s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.4s;
+	}
+.language-2 {
+		margin-left: 2.5em;
+		margin-top: 1em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1em;
+	position: absolute;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.6s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.6s;
+	}
+	.selector {
+		padding-top: 5em;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+		font-size: 2em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		margin-bottom: 10em;
+		opacity: 0;
+		animation: fadeInUp 1s ease-in-out 0s forwards;
+		animation-delay: 1.8s;
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+	.footer-2 {
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		width: 100%;
+		text-align: center;
+	}
+/* FORMULARIO DE ENVIO */
+.form-upload {
+	margin: 0 auto;
+	padding-top: 2em;
+}
+
+	.btn {
+  background: white;
+  border: 1px solid #CFCFCF;
+  border-radius: 7px;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #E3E3E3;
+  font-weight: 400;
+  font-size: 12pt;
+font-style: normal;
+		padding-top: 1px;
+		padding-bottom: 1px;
+		padding-left: 1px;
+		padding-right: 1px;
+	}
+}
+
+/* DESKTOP SMALL AND MOBILE OR TABLET */
+@media (min-width : 405px ) and ( max-width : 629px ){
+	
+/* NAV-TITLE AND LOGO */
+		.title {
+		margin-left: 1em;
+		margin-top: 2em;
+		font-size: 1.5em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+		position:relative;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+}
+
+		.title-2 {
+		margin-left: 1em;
+		margin-top: -3.5em;
+		font-size: 1.5em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+		position: relative;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.2s;
+}
+	
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+	#logo {
+		max-width: 80px;
+		margin-top: -2em;
+	}
+	
+	#logo-2 {
+	max-width: 100px;
+		margin-top: 2em;
+		margin-right: -3.6em;
+	}
+	
+	.nav {
+		width: 100%;
+	}
+	#go-eng {
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		margin-left: 1em;
+	}
+.header-info {
+		padding-top: 4em;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+		font-size: 1em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+	}
+
+/* LANGUAGE AND CTA-SELECTOR */
+		.language {
+		margin-left: 2.5em;
+		margin-top: -1em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1em;
+		position: absolute;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.4s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.4s;
+	}
+.language-2 {
+		margin-left: 2.5em;
+		margin-top: -1em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1em;
+	position: absolute;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.6s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.6s;
+	}
+
+	.selector {
+		padding-top: 4em;
+		width: 60%;
+		text-align: center;
+		margin: auto;
+		font-size: 1.4em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		margin-bottom: 9em;
+		opacity: 0;
+		animation: fadeInUp 1s ease-in-out 0s forwards;
+		animation-delay: 1.8s;
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+	
+	.footer-2 {
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		width: 100%;
+		text-align: center;
+		font-size: 0.8em;
+	}
+/* FORMULARIO DE ENVIO */
+.form-upload {
+	margin: 0 auto;
+	padding-top: 2em;
+}
+
+	.btn {
+  background: white;
+  border: 1px solid #CFCFCF;
+  border-radius: 7px;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #E3E3E3;
+  font-weight: 400;
+  font-size: 12pt;
+font-style: normal;
+	}
+}
+	
+
+
+@media (max-width : 404px ){
+		
+/* NAV-TITLE AND LOGO */
+		.title {
+		margin-left: 1em;
+		margin-top: 2em;
+		font-size: 1em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+		position:relative;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+}
+
+		.title-2 {
+		margin-left: 1em;
+		margin-top: -5.7em;
+		font-size: 1em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+		position: relative;
+			margin-bottom: -4.5em;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.2s;
+}
+	
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+	
+	#logo {
+		max-width: 70px;
+		margin-top: 1em;
+		margin-bottom: -1em;
+	}
+	#logo-2 {
+	max-width: 100px;
+		margin-top: 2em;
+		margin-right: -2em;
+	}
+	.nav {
+		width: 100%;
+	}
+
+	#go-eng {
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		margin-left: 1em;
+	}
+.header-info {
+		padding-top: 4em;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+		font-size: 1em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		color: white;
+	
+	}
+
+	
+/* LANGUAGE AND CTA-SELECTOR */
+		.language {
+		margin-left: 1.5em;
+		margin-top: 1em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1em;
+		position: absolute;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.4s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.4s;
+	}
+.language-2 {
+		margin-left: 1.5em;
+		margin-top: 1em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1em;
+	position: absolute;
+    left: -500px;
+    height: 100px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1.6s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1.6s;
+	}
+
+	.selector {
+		padding-top: 4em;
+		width: 90%;
+		text-align: center;
+		margin: 0 auto;
+		font-size: 1.4em;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		margin-bottom: 9em;
+		opacity: 0;
+		animation: fadeInUp 1s ease-in-out 0s forwards;
+		animation-delay: 1.8s;
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+	
+	.footer-2 {
+		margin-top: 25em;
+		color: white;
+		font-family: trade-gothic-next, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		width: 100%;
+		text-align: center;
+		font-size: 0.7em;
+	}
+	
+	
+/* FORMULARIO DE ENVIO */
+.form-upload {
+	margin: 0 auto;
+	padding-top: 2em;
+}
+
+	.btn {
+  background: white;
+  border: 1px solid #CFCFCF;
+  border-radius: 7px;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #E3E3E3;
+  font-weight: 400;
+  font-size: 10pt;
+font-style: normal;
+	}
+}
+}
