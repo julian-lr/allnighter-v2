@@ -20,8 +20,8 @@
   const getUrl = window.location;
   const siteUrl = getUrl.protocol + '//' + getUrl.host + '/';
   const actualUrl = window.location.href;
-  const urlEsp = siteUrl + 'esp.html';
-  const urlEng = siteUrl + 'eng.html';
+  const urlEsp = siteUrl + 'pages/esp.html';
+  const urlEng = siteUrl + 'pages/eng.html';
 
   if (locale === 'en' && actualUrl === siteUrl) {
     window.location.href = urlEng;

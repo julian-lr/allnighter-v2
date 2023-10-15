@@ -1,0 +1,20 @@
+// Page styling for both .eng and .esp
+.pagecontainer {
+    &__title {
+        text-align: center;
+        font-size: 1rem;
+        margin: 0 15px;
+        font-weight: bold;
+    }
+    &__subtitle {
+        text-align: center;
+        font-size: 0.85rem;
+        margin: 10px 15px;
+    }
+    &__a {
+        text-decoration: underline;
+    }
+    &__form {
+        text-align: center;
+    }
+}

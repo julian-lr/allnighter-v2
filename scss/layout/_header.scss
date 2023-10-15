@@ -10,18 +10,12 @@ nav.navbar {
     img {
         width: 45px;
     }
-}
-
-//Main content adjustments, basic padding/margin, font-resizing, and fixed the height to 75vh so the footer stays closer to the bottom.
-.maincontainer {
-    height: 75vh;
-    &__h2 {
-        font-size: 1.25rem;
+    h2 {
+        font-size: 1rem;
         padding: 0;
         margin: 0;
-    }
-    &__row {
-        padding-top: 0 !important;
-        margin-top: 5px;
+        color: white;
+        font-weight: bold;
     }
 }
+

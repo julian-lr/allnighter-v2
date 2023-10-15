@@ -17,8 +17,8 @@
     <header>
       <nav class="navbar">
         <div class="container">
-          <a class="navbar-brand me-auto" href="#">
-            <h1>Go to English version</h1>
+          <a class="navbar-brand me-auto en" href="./eng.html">
+            <h2>Go to English version</h2>
           </a>
           <a class="navbar-brand ms-auto" href="#">
             <img src="../img/AN-logo.png" alt="AllNighter" />
@@ -26,27 +26,31 @@
         </div>
       </nav>
     </header>
-    <main></main>
-    <h1 class="header-info">
-      Eleg&iacute; el archivo a analizar y, en segundos, vas a ver el resultado
-      en la consola.
-    </h1>
-    <table class="form-upload">
-      <td>
-        <form class="upload">
-          <input
-            type="file"
-            class="btn"
-            id="btn"
-            alt="Subir archivos"
-            multiple
-          />
-        </form>
-      </td>
-    </table>
-    <div id="outdiv">
-      <div id="console"></div>
-    </div>
+    <main>
+      <div class="pagecontainer">
+        <p class="pagecontainer__title">
+          Eleg&iacute; el archivo y, en segundos,<br>vas a ver el
+          resultado en la consola de abajo.
+        </p>
+        <p class="pagecontainer__subtitle">
+          No te preocupes, no guardamos nada.<br><a href="../js/esp-logic.js" class="pagecontainer__a">Podés revisar el JavaScript acá</a>.
+        </p>
+        <div class="form-upload pagecontainer__form">
+          <form class="upload">
+            <input
+              type="file"
+              class="btn"
+              id="btn"
+              alt="Subir archivos"
+              multiple
+            />
+          </form>
+        </div>
+      </div>
+      <div id="outdiv">
+        <div id="console"></div>
+      </div>
+    </main>
     <footer>
       <p class="text-center">By<br />JLR - LSO - JM</p>
     </footer>

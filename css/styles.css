@@ -13,6 +13,7 @@ html {
 body {
   background-image: linear-gradient(#53C4FF, #A774FF, #0D84C4);
   background-repeat: no-repeat;
+  background-color: #0D84C4;
   height: 100%;
 }
 
@@ -46,18 +47,12 @@ nav.navbar h1 {
 nav.navbar img {
   width: 45px;
 }
-
-.maincontainer {
-  height: 75vh;
-}
-.maincontainer__h2 {
-  font-size: 1.25rem;
+nav.navbar h2 {
+  font-size: 1rem;
   padding: 0;
   margin: 0;
-}
-.maincontainer__row {
-  padding-top: 0 !important;
-  margin-top: 5px;
+  color: white;
+  font-weight: bold;
 }
 
 @keyframes typewriter {
@@ -160,6 +155,37 @@ nav.navbar img {
 }
 .maincontainer__en {
   animation: 0.45s ease-in 0s 1 slideUpDelay;
+}
+
+.maincontainer {
+  height: 75vh;
+}
+.maincontainer__h2 {
+  font-size: 1.25rem;
+  padding: 0;
+  margin: 0;
+}
+.maincontainer__row {
+  padding-top: 0 !important;
+  margin-top: 5px;
+}
+
+.pagecontainer__title {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 15px;
+  font-weight: bold;
+}
+.pagecontainer__subtitle {
+  text-align: center;
+  font-size: 0.85rem;
+  margin: 10px 15px;
+}
+.pagecontainer__a {
+  text-decoration: underline;
+}
+.pagecontainer__form {
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
