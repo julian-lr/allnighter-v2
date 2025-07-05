@@ -91,10 +91,3 @@ function displayContents(contents) {
 }
 
 document.getElementById('btn').addEventListener('change', StartOP, false);
-
-for (p of document.querySelectorAll('p')) {
-  console.debug('text:', td, td.innerText);
-  td.setAttribute('text', td.innerText);
-}
-for (td of document.querySelectorAll('td[text="male"]'))
-  console.debug('male:', td, td.innerText);
