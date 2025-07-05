@@ -1,8 +1,8 @@
-var namef = ['', '', '', '', '', '', '', '', '', ''];
-var a = 0;
+const namef = ['', '', '', '', '', '', '', '', '', ''];
+let fileIndex = 0;
 
 function StartOP(e) {
-  a = 0;
+  fileIndex = 0;
   var div = document.getElementById('console');
 
   while (div.firstChild) {
@@ -13,15 +13,11 @@ function StartOP(e) {
     namef[i] = e.target.files[i].name;
   }
 
-  var tag;
-  var text;
-  var element;
-
   for (var i = 0; i < e.target.files.length; i++) {
-    var reader = new FileReader();
+    const reader = new FileReader();
 
     reader.onloadend = function (e) {
-      var contents = reader.result;
+      const contents = reader.result;
       displayContents(contents);
     };
 

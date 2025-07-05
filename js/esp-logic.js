@@ -1,9 +1,9 @@
-let namef = ['', '', '', '', '', '', '', '', '', ''];
-let a = 0;
+const namef = ['', '', '', '', '', '', '', '', '', ''];
+let fileIndex = 0;
 
 function StartOP(e) {
-  a = 0;
-  let div = document.getElementById('console');
+  fileIndex = 0;
+  const div = document.getElementById('console');
 
   while (div.firstChild) {
     div.removeChild(div.firstChild);
@@ -39,18 +39,11 @@ function checkForm(thetxt) {
 }
 
 function displayContents(contents) {
-  let texto = contents;
-  let tag;
-  let text;
-  let element;
-  let name = namef[a];
-  a++;
+  const name = namef[fileIndex];
+  fileIndex++;
 
   if (checkForm(contents)) {
-    let result = '';
-    let lines = [];
-    lines = texto.split('\n');
-    let element = document.getElementById('demo');
+    const lines = contents.split('\n');
 
     for (let linea = 0; linea < lines.length; linea++) {
       for (let puesto = 0; puesto < lines[linea].length; puesto++) {
@@ -61,7 +54,7 @@ function displayContents(contents) {
               /[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´’‘]/g
             ) !== null
         ) {
-          result =
+          const result =
             'ARCHIVO: ' +
             name +
             ':    LINEA: ' +
@@ -69,22 +62,22 @@ function displayContents(contents) {
             ' - PUESTO: ' +
             (puesto + 1).toString() +
             '\n';
-          tag = document.createElement('p');
+          const tag = document.createElement('p');
           tag.className = 'line-1 anim-typewriter';
-          text = document.createTextNode(result);
+          const text = document.createTextNode(result);
           tag.appendChild(text);
-          element = document.getElementById('console');
+          const element = document.getElementById('console');
           element.appendChild(tag);
         }
       }
     }
   } else {
-    tag = document.createElement('p');
-    text = document.createTextNode(
+    const tag = document.createElement('p');
+    const text = document.createTextNode(
       'ARCHIVO: ' + name + ' - NO CONTIENE CARACTERES ESPECIALES'
     );
     tag.appendChild(text);
-    element = document.getElementById('console');
+    const element = document.getElementById('console');
     tag.className = 'line-1 anim-typewriter';
     element.appendChild(tag);
   }
