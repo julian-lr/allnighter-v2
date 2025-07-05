@@ -5,6 +5,13 @@ let fileIndex = 0;
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB limit
 const ALLOWED_FILE_TYPES = ['.txt', '.html', '.htm', '.css', '.js', '.xml', '.csv'];
 
+// Performance optimization: compile regex once
+const SPECIAL_CHARS_REGEX = /[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´'']/g;
+
+// Progress tracking
+let totalFiles = 0;
+let processedFiles = 0;
+
 // File validation functions
 function validateFileSize(file) {
   return file.size <= MAX_FILE_SIZE;
@@ -27,6 +34,7 @@ function showError(message) {
 
 function StartOP(e) {
   fileIndex = 0;
+  processedFiles = 0;
   var div = document.getElementById('console');
 
   while (div.firstChild) {
@@ -36,6 +44,8 @@ function StartOP(e) {
   // Validate files before processing
   const files = Array.from(e.target.files);
   const validFiles = [];
+
+  totalFiles = files.length; // Update total files count
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
@@ -59,6 +69,9 @@ function StartOP(e) {
     return;
   }
 
+  totalFiles = validFiles.length;
+  showProgress();
+
   // Process valid files
   for (let i = 0; i < validFiles.length; i++) {
     const reader = new FileReader();
@@ -66,10 +79,18 @@ function StartOP(e) {
     reader.onloadend = function (e) {
       const contents = reader.result;
       displayContents(contents);
+      processedFiles++;
+      showProgress();
+      
+      if (processedFiles === totalFiles) {
+        removeProgress();
+      }
     };
 
     reader.onerror = function() {
       showError(`Error reading file: ${validFiles[i].name}`);
+      processedFiles++;
+      showProgress();
     };
 
     reader.readAsText(validFiles[i]);
@@ -78,9 +99,7 @@ function StartOP(e) {
 
 function checkForm(thetxt) {
   var withoutEnter = thetxt.replace(/\r?\n|\r/g, '');
-  var result = withoutEnter.match(
-    /[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´’‘]/g
-  );
+  var result = withoutEnter.match(SPECIAL_CHARS_REGEX);
 
   return result;
 }
@@ -104,9 +123,7 @@ function displayContents(contents) {
         if (
           lines[linea]
             .charAt(puesto)
-            .match(
-              /[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëïÍÏÔÖÕÓöõôÜÚüáéí'óüúÑñ✓✔‑–—€®©℠™´’‘]/g
-            ) !== null
+            .match(SPECIAL_CHARS_REGEX) !== null
         ) {
           result =
             'FILE: ' +
@@ -134,6 +151,38 @@ function displayContents(contents) {
     element = document.getElementById('console');
     tag.className = 'line-1 anim-typewriter';
     element.appendChild(tag);
+  }
+
+  processedFiles++; // Increment processed files count
+  showProgress(); // Update progress indicator
+}
+
+function showProgress() {
+  const progressDiv = document.getElementById('console');
+  const existingProgress = document.querySelector('.progress-indicator');
+  
+  if (existingProgress) {
+    existingProgress.remove();
+  }
+  
+  if (processedFiles < totalFiles) {
+    const progressTag = document.createElement('p');
+    progressTag.className = 'line-1 progress-indicator';
+    progressTag.style.color = '#4CAF50';
+    const progressText = document.createTextNode(
+      `Processing files... ${processedFiles}/${totalFiles} completed`
+    );
+    progressTag.appendChild(progressText);
+    progressDiv.appendChild(progressTag);
+  } else {
+    removeProgress(); // Remove progress indicator when done
+  }
+}
+
+function removeProgress() {
+  const existingProgress = document.querySelector('.progress-indicator');
+  if (existingProgress) {
+    existingProgress.remove();
   }
 }
 

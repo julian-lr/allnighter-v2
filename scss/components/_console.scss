@@ -53,3 +53,13 @@
     padding-left: 10px;
     margin-left: 0.5em !important;
 }
+
+// Progress indicator styling
+.progress-indicator {
+    color: #4CAF50 !important;
+    font-weight: bold;
+    border-left: 3px solid #4CAF50;
+    padding-left: 10px;
+    margin-left: 0.5em !important;
+    animation: none !important; // Disable typewriter animation for progress
+}
