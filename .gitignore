@@ -1,1 +1,8 @@
 node_modules
+*.min.js
+*.min.css
+.sass-cache
+css/styles.css.map
+.DS_Store
+Thumbs.db
+*.log
