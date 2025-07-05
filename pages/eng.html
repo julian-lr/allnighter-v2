@@ -39,16 +39,22 @@
             >You can check the JavaScript here.</a
           >
         </p>
-        <div class="form-upload pagecontainer__form">
-          <form class="upload">
-            <input
-              type="file"
-              class="btn"
-              id="btn"
-              alt="Subir archivos"
-              multiple
-            />
-          </form>
+        <div class="form-upload pagecontainer__form drag-drop-area">
+          <div class="upload-content">
+            <div class="upload-icon">📁</div>
+            <p class="upload-text">Drag files here or click to select</p>
+            <p class="upload-hint">Supported files: .txt, .html, .css, .js, .xml, .csv (max. 5MB)</p>
+            <form class="upload">
+              <input
+                type="file"
+                class="btn file-input"
+                id="btn"
+                alt="Upload files"
+                multiple
+                accept=".txt,.html,.htm,.css,.js,.xml,.csv"
+              />
+            </form>
+          </div>
         </div>
       </div>
       <div id="outdiv">

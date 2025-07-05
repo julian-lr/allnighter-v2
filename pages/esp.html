@@ -35,16 +35,22 @@
         <p class="pagecontainer__subtitle">
           No te preocupes, no guardamos nada.<br><a href="../js/esp-logic.js" class="pagecontainer__a">Podés revisar el JavaScript acá</a>.
         </p>
-        <div class="form-upload pagecontainer__form">
-          <form class="upload">
-            <input
-              type="file"
-              class="btn"
-              id="btn"
-              alt="Subir archivos"
-              multiple
-            />
-          </form>
+        <div class="form-upload pagecontainer__form drag-drop-area">
+          <div class="upload-content">
+            <div class="upload-icon">📁</div>
+            <p class="upload-text">Arrastra archivos aquí o haz clic para seleccionar</p>
+            <p class="upload-hint">Archivos soportados: .txt, .html, .css, .js, .xml, .csv (máx. 5MB)</p>
+            <form class="upload">
+              <input
+                type="file"
+                class="btn file-input"
+                id="btn"
+                alt="Subir archivos"
+                multiple
+                accept=".txt,.html,.htm,.css,.js,.xml,.csv"
+              />
+            </form>
+          </div>
         </div>
       </div>
       <div id="outdiv">

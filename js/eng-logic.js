@@ -12,6 +12,9 @@ const SPECIAL_CHARS_REGEX = /[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëï
 let totalFiles = 0;
 let processedFiles = 0;
 
+// Results storage for export functionality
+let scanResults = [];
+
 // File validation functions
 function validateFileSize(file) {
   return file.size <= MAX_FILE_SIZE;
@@ -139,6 +142,14 @@ function displayContents(contents) {
           tag.appendChild(text);
           element = document.getElementById('console');
           element.appendChild(tag);
+
+          // Add result to scanResults for export functionality
+          scanResults.push({
+            file: name,
+            line: linea + 1,
+            position: puesto + 1,
+            character: lines[linea].charAt(puesto)
+          });
         }
       }
     }
@@ -185,5 +196,148 @@ function removeProgress() {
     existingProgress.remove();
   }
 }
+
+// Drag and drop functionality
+function initializeDragAndDrop() {
+  const uploadArea = document.querySelector('.pagecontainer__form');
+  const fileInput = document.getElementById('btn');
+  
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, preventDefaults, false);
+  });
+  
+  ['dragenter', 'dragover'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, highlight, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, unhighlight, false);
+  });
+  
+  uploadArea.addEventListener('drop', handleDrop, false);
+  uploadArea.addEventListener('click', () => fileInput.click());
+}
+
+function preventDefaults(e) {
+  e.preventDefault();
+  e.stopPropagation();
+}
+
+function highlight(e) {
+  e.currentTarget.classList.add('drag-highlight');
+}
+
+function unhighlight(e) {
+  e.currentTarget.classList.remove('drag-highlight');
+}
+
+function handleDrop(e) {
+  const dt = e.dataTransfer;
+  const files = dt.files;
+  
+  // Create a fake event to reuse existing StartOP function
+  const fakeEvent = { target: { files: files } };
+  StartOP(fakeEvent);
+}
+
+// Export functionality
+function exportResults(format = 'txt') {
+  if (scanResults.length === 0) {
+    showError('No results to export');
+    return;
+  }
+  
+  let content = '';
+  let filename = '';
+  let mimeType = '';
+  
+  if (format === 'csv') {
+    content = 'File,Line,Position,Character\n';
+    scanResults.forEach(result => {
+      content += `"${result.file}",${result.line},${result.position},"${result.character}"\n`;
+    });
+    filename = 'allnighter-results.csv';
+    mimeType = 'text/csv';
+  } else {
+    content = 'AllNighter Results - Special Characters Found\n';
+    content += '='.repeat(60) + '\n\n';
+    scanResults.forEach(result => {
+      content += `FILE: ${result.file} - LINE: ${result.line} - POSITION: ${result.position} - CHARACTER: "${result.character}"\n`;
+    });
+    filename = 'allnighter-results.txt';
+    mimeType = 'text/plain';
+  }
+  
+  const blob = new Blob([content], { type: mimeType });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
+function copyToClipboard() {
+  if (scanResults.length === 0) {
+    showError('No results to copy');
+    return;
+  }
+  
+  let content = scanResults.map(result => 
+    `FILE: ${result.file} - LINE: ${result.line} - POSITION: ${result.position}`
+  ).join('\n');
+  
+  navigator.clipboard.writeText(content).then(() => {
+    showSuccess('Results copied to clipboard');
+  }).catch(() => {
+    showError('Error copying to clipboard');
+  });
+}
+
+function showSuccess(message) {
+  const consoleDiv = document.getElementById('console');
+  const successTag = document.createElement('p');
+  successTag.className = 'line-1 success-message';
+  successTag.style.color = '#4CAF50';
+  const successText = document.createTextNode(`✓ ${message}`);
+  successTag.appendChild(successText);
+  consoleDiv.appendChild(successTag);
+  
+  // Remove success message after 3 seconds
+  setTimeout(() => {
+    if (successTag.parentNode) {
+      successTag.parentNode.removeChild(successTag);
+    }
+  }, 3000);
+}
+
+function addExportButtons() {
+  // Remove existing export buttons if any
+  const existingButtons = document.querySelector('.export-buttons');
+  if (existingButtons) {
+    existingButtons.remove();
+  }
+
+  if (scanResults.length === 0) {
+    return; // No results to export
+  }
+
+  const consoleDiv = document.getElementById('console');
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'export-buttons';
+  buttonContainer.innerHTML = `
+    <div style="margin: 20px 0; text-align: center; border-top: 1px solid #555; padding-top: 20px;">
+      <p style="color: #4CAF50; margin-bottom: 10px;">📊 ${scanResults.length} special characters found</p>
+      <button onclick="exportResults('txt')" class="export-btn">📄 Export TXT</button>
+      <button onclick="exportResults('csv')" class="export-btn">📊 Export CSV</button>
+      <button onclick="copyToClipboard()" class="export-btn">📋 Copy</button>
+    </div>
+  `;
+  
+  consoleDiv.appendChild(buttonContainer);
+}
+
+// Initialize drag and drop when page loads
+document.addEventListener('DOMContentLoaded', initializeDragAndDrop);
 
 document.getElementById('btn').addEventListener('change', StartOP, false);

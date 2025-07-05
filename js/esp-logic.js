@@ -12,6 +12,9 @@ const SPECIAL_CHARS_REGEX = /[¿º«»ª¡ÀÂÃÄÁÆàâãäæÇçÊËÉêëï
 let totalFiles = 0;
 let processedFiles = 0;
 
+// Results storage for export functionality
+let scanResults = [];
+
 // File validation functions
 function validateFileSize(file) {
   return file.size <= MAX_FILE_SIZE;
@@ -35,6 +38,7 @@ function showError(message) {
 function StartOP(e) {
   fileIndex = 0;
   processedFiles = 0;
+  scanResults = []; // Reset results for new scan
   const div = document.getElementById('console');
 
   while (div.firstChild) {
@@ -85,6 +89,7 @@ function StartOP(e) {
       
       if (processedFiles === totalFiles) {
         removeProgress();
+        addExportButtons(); // Add export buttons when all files are processed
       }
     };
 
@@ -126,6 +131,14 @@ function displayContents(contents) {
         tag.appendChild(text);
         const element = document.getElementById('console');
         element.appendChild(tag);
+
+        // Store result for export functionality
+        scanResults.push({
+          file: name,
+          line: linea + 1,
+          position: match.index + 1,
+          character: match[0]
+        });
       }
     }
   } else {
@@ -170,5 +183,148 @@ function removeProgress() {
     existingProgress.remove();
   }
 }
+
+// Drag and drop functionality
+function initializeDragAndDrop() {
+  const uploadArea = document.querySelector('.pagecontainer__form');
+  const fileInput = document.getElementById('btn');
+  
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, preventDefaults, false);
+  });
+  
+  ['dragenter', 'dragover'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, highlight, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, unhighlight, false);
+  });
+  
+  uploadArea.addEventListener('drop', handleDrop, false);
+  uploadArea.addEventListener('click', () => fileInput.click());
+}
+
+function preventDefaults(e) {
+  e.preventDefault();
+  e.stopPropagation();
+}
+
+function highlight(e) {
+  e.currentTarget.classList.add('drag-highlight');
+}
+
+function unhighlight(e) {
+  e.currentTarget.classList.remove('drag-highlight');
+}
+
+function handleDrop(e) {
+  const dt = e.dataTransfer;
+  const files = dt.files;
+  
+  // Create a fake event to reuse existing StartOP function
+  const fakeEvent = { target: { files: files } };
+  StartOP(fakeEvent);
+}
+
+// Export functionality
+function exportResults(format = 'txt') {
+  if (scanResults.length === 0) {
+    showError('No hay resultados para exportar');
+    return;
+  }
+  
+  let content = '';
+  let filename = '';
+  let mimeType = '';
+  
+  if (format === 'csv') {
+    content = 'Archivo,Línea,Posición,Carácter\n';
+    scanResults.forEach(result => {
+      content += `"${result.file}",${result.line},${result.position},"${result.character}"\n`;
+    });
+    filename = 'allnighter-results.csv';
+    mimeType = 'text/csv';
+  } else {
+    content = 'Resultados de AllNighter - Caracteres Especiales Encontrados\n';
+    content += '='.repeat(60) + '\n\n';
+    scanResults.forEach(result => {
+      content += `ARCHIVO: ${result.file} - LÍNEA: ${result.line} - POSICIÓN: ${result.position} - CARÁCTER: "${result.character}"\n`;
+    });
+    filename = 'allnighter-results.txt';
+    mimeType = 'text/plain';
+  }
+  
+  const blob = new Blob([content], { type: mimeType });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
+function copyToClipboard() {
+  if (scanResults.length === 0) {
+    showError('No hay resultados para copiar');
+    return;
+  }
+  
+  let content = scanResults.map(result => 
+    `ARCHIVO: ${result.file} - LÍNEA: ${result.line} - POSICIÓN: ${result.position}`
+  ).join('\n');
+  
+  navigator.clipboard.writeText(content).then(() => {
+    showSuccess('Resultados copiados al portapapeles');
+  }).catch(() => {
+    showError('Error al copiar al portapapeles');
+  });
+}
+
+function showSuccess(message) {
+  const consoleDiv = document.getElementById('console');
+  const successTag = document.createElement('p');
+  successTag.className = 'line-1 success-message';
+  successTag.style.color = '#4CAF50';
+  const successText = document.createTextNode(`✓ ${message}`);
+  successTag.appendChild(successText);
+  consoleDiv.appendChild(successTag);
+  
+  // Remove success message after 3 seconds
+  setTimeout(() => {
+    if (successTag.parentNode) {
+      successTag.parentNode.removeChild(successTag);
+    }
+  }, 3000);
+}
+
+function addExportButtons() {
+  // Remove existing export buttons if any
+  const existingButtons = document.querySelector('.export-buttons');
+  if (existingButtons) {
+    existingButtons.remove();
+  }
+
+  if (scanResults.length === 0) {
+    return; // No results to export
+  }
+
+  const consoleDiv = document.getElementById('console');
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'export-buttons';
+  buttonContainer.innerHTML = `
+    <div style="margin: 20px 0; text-align: center; border-top: 1px solid #555; padding-top: 20px;">
+      <p style="color: #4CAF50; margin-bottom: 10px;">📊 ${scanResults.length} caracteres especiales encontrados</p>
+      <button onclick="exportResults('txt')" class="export-btn">📄 Exportar TXT</button>
+      <button onclick="exportResults('csv')" class="export-btn">📊 Exportar CSV</button>
+      <button onclick="copyToClipboard()" class="export-btn">📋 Copiar</button>
+    </div>
+  `;
+  
+  consoleDiv.appendChild(buttonContainer);
+}
+
+// Initialize drag and drop when page loads
+document.addEventListener('DOMContentLoaded', initializeDragAndDrop);
 
 document.getElementById('btn').addEventListener('change', StartOP, false);
