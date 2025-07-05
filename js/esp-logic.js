@@ -29,10 +29,15 @@ function showError(message) {
   const consoleDiv = document.getElementById('console');
   const errorTag = document.createElement('p');
   errorTag.className = 'line-1 anim-typewriter error-message';
+  errorTag.setAttribute('role', 'alert');
+  errorTag.setAttribute('aria-live', 'assertive');
   errorTag.style.color = '#ff6b6b';
   const errorText = document.createTextNode(`ERROR: ${message}`);
   errorTag.appendChild(errorText);
   consoleDiv.appendChild(errorTag);
+  
+  // Announce error to screen readers
+  announceToScreenReader(`Error: ${message}`);
 }
 
 function StartOP(e) {
@@ -131,6 +136,9 @@ function displayContents(contents) {
         tag.appendChild(text);
         const element = document.getElementById('console');
         element.appendChild(tag);
+        
+        // Make result accessible
+        makeElementAccessible(tag, 'listitem');
 
         // Store result for export functionality
         scanResults.push({
@@ -285,10 +293,15 @@ function showSuccess(message) {
   const consoleDiv = document.getElementById('console');
   const successTag = document.createElement('p');
   successTag.className = 'line-1 success-message';
+  successTag.setAttribute('role', 'status');
+  successTag.setAttribute('aria-live', 'polite');
   successTag.style.color = '#4CAF50';
   const successText = document.createTextNode(`✓ ${message}`);
   successTag.appendChild(successText);
   consoleDiv.appendChild(successTag);
+  
+  // Announce success to screen readers
+  announceToScreenReader(message);
   
   // Remove success message after 3 seconds
   setTimeout(() => {
@@ -312,19 +325,111 @@ function addExportButtons() {
   const consoleDiv = document.getElementById('console');
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'export-buttons';
+  buttonContainer.setAttribute('role', 'region');
+  buttonContainer.setAttribute('aria-label', 'Opciones de exportación');
   buttonContainer.innerHTML = `
     <div style="margin: 20px 0; text-align: center; border-top: 1px solid #555; padding-top: 20px;">
-      <p style="color: #4CAF50; margin-bottom: 10px;">📊 ${scanResults.length} caracteres especiales encontrados</p>
-      <button onclick="exportResults('txt')" class="export-btn">📄 Exportar TXT</button>
-      <button onclick="exportResults('csv')" class="export-btn">📊 Exportar CSV</button>
-      <button onclick="copyToClipboard()" class="export-btn">📋 Copiar</button>
+      <p style="color: #4CAF50; margin-bottom: 10px;" role="status" aria-live="polite">📊 ${scanResults.length} caracteres especiales encontrados</p>
+      <button onclick="exportResults('txt')" class="export-btn" aria-label="Exportar resultados como archivo de texto">📄 Exportar TXT</button>
+      <button onclick="exportResults('csv')" class="export-btn" aria-label="Exportar resultados como archivo CSV">📊 Exportar CSV</button>
+      <button onclick="copyToClipboard()" class="export-btn" aria-label="Copiar resultados al portapapeles">📋 Copiar</button>
     </div>
   `;
   
   consoleDiv.appendChild(buttonContainer);
+  
+  // Announce completion to screen readers
+  announceToScreenReader(`Análisis completado. ${scanResults.length} caracteres especiales encontrados. Opciones de exportación disponibles.`);
+}
+
+// Accessibility functions
+function initializeAccessibility() {
+  // Add keyboard navigation to drag-drop area
+  const dragDropArea = document.querySelector('.drag-drop-area');
+  if (dragDropArea) {
+    dragDropArea.addEventListener('keydown', handleDragDropKeyDown);
+  }
+
+  // Add keyboard navigation to console area
+  const consoleArea = document.getElementById('console');
+  if (consoleArea) {
+    consoleArea.addEventListener('keydown', handleConsoleKeyDown);
+  }
+
+  // Announce page load to screen readers
+  announceToScreenReader('Página cargada. AllNighter - Analizador de caracteres especiales');
+}
+
+function handleDragDropKeyDown(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    document.getElementById('btn').click();
+  }
+}
+
+function handleConsoleKeyDown(e) {
+  const console = e.target;
+  const results = console.querySelectorAll('.line-1:not(.progress-indicator):not(.error-message):not(.success-message)');
+  
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    
+    if (results.length > 0) {
+      let currentIndex = Array.from(results).findIndex(el => el.classList.contains('focused'));
+      
+      if (e.key === 'ArrowDown') {
+        currentIndex = (currentIndex + 1) % results.length;
+      } else {
+        currentIndex = currentIndex <= 0 ? results.length - 1 : currentIndex - 1;
+      }
+      
+      // Remove focus from all items
+      results.forEach(el => el.classList.remove('focused'));
+      
+      // Focus current item
+      results[currentIndex].classList.add('focused');
+      results[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Announce to screen reader
+      announceToScreenReader(results[currentIndex].textContent);
+    }
+  }
+}
+
+function announceToScreenReader(message) {
+  const announcement = document.createElement('div');
+  announcement.setAttribute('aria-live', 'assertive');
+  announcement.setAttribute('aria-atomic', 'true');
+  announcement.className = 'sr-only';
+  announcement.textContent = message;
+  
+  document.body.appendChild(announcement);
+  
+  // Remove after announcement
+  setTimeout(() => {
+    document.body.removeChild(announcement);
+  }, 1000);
+}
+
+function makeElementAccessible(element, role = 'listitem') {
+  element.setAttribute('role', role);
+  element.setAttribute('tabindex', '0');
+  
+  // Add keyboard navigation
+  element.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      // Copy this result to clipboard
+      navigator.clipboard.writeText(element.textContent).then(() => {
+        announceToScreenReader('Resultado copiado al portapapeles');
+      });
+    }
+  });
 }
 
 // Initialize drag and drop when page loads
-document.addEventListener('DOMContentLoaded', initializeDragAndDrop);
+document.addEventListener('DOMContentLoaded', () => {
+  initializeDragAndDrop();
+  initializeAccessibility();
+});
 
 document.getElementById('btn').addEventListener('change', StartOP, false);

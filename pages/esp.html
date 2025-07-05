@@ -14,6 +14,7 @@
     <link href="../css/styles.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
     <header>
       <nav class="navbar">
         <div class="container">
@@ -26,25 +27,30 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main role="main" id="main">
       <div class="pagecontainer">
-        <p class="pagecontainer__title">
+        <h1 class="pagecontainer__title" id="page-title">
           Eleg&iacute; el archivo y, en segundos,<br>vas a ver el
           resultado en la consola de abajo.
-        </p>
+        </h1>
         <p class="pagecontainer__subtitle">
           No te preocupes, no guardamos nada.<br><a href="../js/esp-logic.js" class="pagecontainer__a">Podés revisar el JavaScript acá</a>.
         </p>
-        <div class="form-upload pagecontainer__form drag-drop-area">
+        <div class="form-upload pagecontainer__form drag-drop-area" 
+             role="button" 
+             tabindex="0"
+             aria-labelledby="upload-label"
+             aria-describedby="upload-hint">
           <div class="upload-content">
-            <div class="upload-icon">📁</div>
-            <p class="upload-text">Arrastra archivos aquí o haz clic para seleccionar</p>
-            <p class="upload-hint">Archivos soportados: .txt, .html, .css, .js, .xml, .csv (máx. 5MB)</p>
+            <div class="upload-icon" aria-hidden="true">📁</div>
+            <p class="upload-text" id="upload-label">Arrastra archivos aquí o haz clic para seleccionar</p>
+            <p class="upload-hint" id="upload-hint">Archivos soportados: .txt, .html, .css, .js, .xml, .csv (máx. 5MB)</p>
             <form class="upload">
               <input
                 type="file"
                 class="btn file-input"
                 id="btn"
+                aria-label="Seleccionar archivos para analizar caracteres especiales"
                 alt="Subir archivos"
                 multiple
                 accept=".txt,.html,.htm,.css,.js,.xml,.csv"
@@ -53,8 +59,13 @@
           </div>
         </div>
       </div>
-      <div id="outdiv">
-        <div id="console"></div>
+      <div id="outdiv" role="region" aria-labelledby="console-title">
+        <h2 id="console-title" class="sr-only">Resultados del análisis</h2>
+        <div id="console" 
+             role="log" 
+             aria-live="polite" 
+             aria-label="Consola de resultados del análisis de caracteres especiales"
+             tabindex="0"></div>
       </div>
     </main>
     <footer>

@@ -14,6 +14,7 @@
     <link href="./css/styles.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
     <header>
       <nav class="navbar">
         <div class="container">
@@ -26,23 +27,31 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main role="main" id="main">
       <div class="container text-center maincontainer">
-        <h2 class="maincontainer__h2 esh2">
+        <h2 class="maincontainer__h2 esh2" lang="es">
           Por favor, eleg&iacute; un idioma.
         </h2>
-		<h2 class="maincontainer__h2 enh2">
+		<h2 class="maincontainer__h2 enh2" lang="en">
 			Please, select a language.
 		  </h2>
-        <div class="row justify-content-center gy-3 p-3">
+        <div class="row justify-content-center gy-3 p-3" role="group" aria-label="Language selection">
           <div class="col-9 col-sm-6 maincontainer__es es">
-            <a href="./pages/esp.html" class="es">
-              <img src="./img/ar.png" alt="AllNighter" />
+            <a href="./pages/esp.html" 
+               class="es" 
+               role="button"
+               aria-label="Ir a la versión en Español"
+               title="Versión en Español">
+              <img src="./img/ar.png" alt="Bandera de Argentina - Versión en Español" />
             </a>
           </div>
           <div class="col-9 col-sm-6 maincontainer__en en">
-            <a href="./pages/eng.html" class="en">
-              <img src="./img/us.png" alt="AllNighter" />
+            <a href="./pages/eng.html" 
+               class="en"
+               role="button" 
+               aria-label="Go to English version"
+               title="English version">
+              <img src="./img/us.png" alt="US Flag - English version" />
             </a>
           </div>
         </div>
