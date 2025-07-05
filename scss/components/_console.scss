@@ -44,3 +44,12 @@
 .anim-typewriter {
     @include animation-typewriterblink;
 }
+
+// Error message styling
+.error-message {
+    color: #ff6b6b !important;
+    font-weight: bold;
+    border-left: 3px solid #ff6b6b;
+    padding-left: 10px;
+    margin-left: 0.5em !important;
+}

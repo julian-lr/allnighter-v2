@@ -1,6 +1,30 @@
 const namef = ['', '', '', '', '', '', '', '', '', ''];
 let fileIndex = 0;
 
+// Configuration constants
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB limit
+const ALLOWED_FILE_TYPES = ['.txt', '.html', '.htm', '.css', '.js', '.xml', '.csv'];
+
+// File validation functions
+function validateFileSize(file) {
+  return file.size <= MAX_FILE_SIZE;
+}
+
+function validateFileType(file) {
+  const fileName = file.name.toLowerCase();
+  return ALLOWED_FILE_TYPES.some(type => fileName.endsWith(type));
+}
+
+function showError(message) {
+  const consoleDiv = document.getElementById('console');
+  const errorTag = document.createElement('p');
+  errorTag.className = 'line-1 anim-typewriter error-message';
+  errorTag.style.color = '#ff6b6b';
+  const errorText = document.createTextNode(`ERROR: ${message}`);
+  errorTag.appendChild(errorText);
+  consoleDiv.appendChild(errorTag);
+}
+
 function StartOP(e) {
   fileIndex = 0;
   var div = document.getElementById('console');
@@ -9,11 +33,34 @@ function StartOP(e) {
     div.removeChild(div.firstChild);
   }
 
-  for (var i = 0; i < e.target.files.length; i++) {
-    namef[i] = e.target.files[i].name;
+  // Validate files before processing
+  const files = Array.from(e.target.files);
+  const validFiles = [];
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    
+    if (!validateFileSize(file)) {
+      showError(`File "${file.name}" is too large. Maximum allowed: 5MB`);
+      continue;
+    }
+    
+    if (!validateFileType(file)) {
+      showError(`File type "${file.name}" not allowed. Valid types: ${ALLOWED_FILE_TYPES.join(', ')}`);
+      continue;
+    }
+    
+    validFiles.push(file);
+    namef[validFiles.length - 1] = file.name;
   }
 
-  for (var i = 0; i < e.target.files.length; i++) {
+  if (validFiles.length === 0) {
+    showError('No valid files to process');
+    return;
+  }
+
+  // Process valid files
+  for (let i = 0; i < validFiles.length; i++) {
     const reader = new FileReader();
 
     reader.onloadend = function (e) {
@@ -21,7 +68,11 @@ function StartOP(e) {
       displayContents(contents);
     };
 
-    reader.readAsText(e.target.files[i]);
+    reader.onerror = function() {
+      showError(`Error reading file: ${validFiles[i].name}`);
+    };
+
+    reader.readAsText(validFiles[i]);
   }
 }
 
