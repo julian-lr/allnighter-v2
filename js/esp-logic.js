@@ -15,6 +15,8 @@ import {
   resetState,
   updateState,
   validateFile,
+  validateFileSize,
+  validateFileType,
   showError,
   showSuccess,
   showProgress,
@@ -106,13 +108,6 @@ function handleFileContent(content, index) {
     showSuccess(MESSAGES[LANG].SUCCESS_COMPLETE);
     addExportButtons();
   }
-}
-
-function checkForm(thetxt) {
-  let withoutEnter = thetxt.replace(/\r?\n|\r/g, '');
-  let result = withoutEnter.match(SPECIAL_CHARS_REGEX);
-
-  return result;
 }
 
 function displayContents(contents) {

@@ -47,10 +47,18 @@ export function resetState() {
  * @param {Object} updates - Object containing state updates
  */
 export function updateState(updates) {
-  if (updates.fileIndex !== undefined) fileIndex = updates.fileIndex;
-  if (updates.totalFiles !== undefined) totalFiles = updates.totalFiles;
-  if (updates.processedFiles !== undefined) processedFiles = updates.processedFiles;
-  if (updates.scanResults !== undefined) scanResults = updates.scanResults;
+  if (updates.fileIndex !== undefined) {
+    fileIndex = updates.fileIndex;
+  }
+  if (updates.totalFiles !== undefined) {
+    totalFiles = updates.totalFiles;
+  }
+  if (updates.processedFiles !== undefined) {
+    processedFiles = updates.processedFiles;
+  }
+  if (updates.scanResults !== undefined) {
+    scanResults = updates.scanResults;
+  }
 }
 
 /**

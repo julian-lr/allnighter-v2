@@ -15,6 +15,8 @@ import {
   resetState,
   updateState,
   validateFile,
+  validateFileSize,
+  validateFileType,
   showError,
   showSuccess,
   showProgress,
@@ -117,7 +119,7 @@ function displayContents(contents) {
   
   if (scanResult.hasSpecialChars) {
     const lines = contents.split('\n');
-    let currentFileResults = [];
+    const currentFileResults = [];
 
     for (let linea = 0; linea < lines.length; linea++) {
       const line = lines[linea];
