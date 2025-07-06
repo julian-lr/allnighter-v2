@@ -1,3 +1,14 @@
+/**
+ * AllNighter v2 - Local Storage and Language Redirect
+ * 
+ * Handles language preference storage and automatic redirection
+ * based on user's previous language selection.
+ * 
+ * @author Julián LR, Lucas Salmerón Olschansky, Julián Moreira
+ * @version 2.0.0
+ * @license MIT
+ */
+
 // INDEX
 
 (function () {
