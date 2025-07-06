@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "A QA tool for detecting special characters in HTML content for email marketing projects",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "build": "npm run scss && npm run minify",
     "scss": "sass scss/main.scss css/styles.css --style compressed --source-map",
@@ -14,19 +15,33 @@
     "serve": "npx http-server . -p 3000 -o",
     "lint": "eslint js/*.js",
     "format": "prettier --write js/*.js scss/**/*.scss *.html pages/*.html",
-    "validate": "html-validate pages/*.html index.html"
+    "validate": "html-validate pages/*.html index.html",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
-  "keywords": ["qa", "html", "email-marketing", "character-detection", "accessibility"],
+  "keywords": [
+    "qa",
+    "html",
+    "email-marketing",
+    "character-detection",
+    "accessibility"
+  ],
   "author": "Julián LR, Lucas Salmerón Olschansky, Julián Moreira",
   "license": "MIT",
   "devDependencies": {
-    "sass": "^1.69.5",
+    "@jest/globals": "^30.0.4",
+    "@testing-library/jest-dom": "^6.6.3",
     "clean-css-cli": "^5.6.2",
-    "terser": "^5.24.0",
     "eslint": "^8.55.0",
-    "prettier": "^3.1.0",
     "html-validate": "^8.7.3",
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.4",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.1.0",
+    "sass": "^1.69.5",
+    "terser": "^5.24.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.2"
