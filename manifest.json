@@ -1,0 +1,71 @@
+{
+  "name": "AllNighter v2 - QA Character Detection Tool",
+  "short_name": "AllNighter",
+  "description": "A professional QA tool for detecting special characters in HTML content for email marketing projects",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff00",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities", "developer"],
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "img/favicon.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "favicon"
+    },
+    {
+      "src": "img/AN-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "img/AN-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "features": [
+    "File upload and analysis",
+    "Drag and drop support",
+    "Multi-language support (Spanish/English)",
+    "Export functionality",
+    "Accessibility features",
+    "Offline capable"
+  ],
+  "shortcuts": [
+    {
+      "name": "Spanish Version",
+      "short_name": "Español",
+      "description": "Open AllNighter in Spanish",
+      "url": "/pages/esp.html",
+      "icons": [
+        {
+          "src": "img/es.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "English Version",
+      "short_name": "English",
+      "description": "Open AllNighter in English", 
+      "url": "/pages/eng.html",
+      "icons": [
+        {
+          "src": "img/us.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

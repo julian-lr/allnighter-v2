@@ -10,6 +10,15 @@
  */
 
 import { APP_CONFIG, REGEX_PATTERNS, SELECTORS } from './config.js';
+import { 
+  sanitizeText, 
+  sanitizeFileContent, 
+  validateFileName, 
+  validateContent,
+  rateLimiter,
+  safeSetTextContent,
+  safeSetInnerHTML
+} from './security.js';
 
 // Global state management
 let fileIndex = 0;
@@ -74,7 +83,46 @@ export function validateFileType(file) {
 }
 
 export function validateFile(file) {
-  return validateFileSize(file) && validateFileType(file);
+  // Rate limiting check
+  if (!rateLimiter.isAllowed()) {
+    return { 
+      isValid: false, 
+      error: 'Too many requests. Please wait before uploading more files.' 
+    };
+  }
+  
+  if (!file) {
+    return { isValid: false, error: 'No file selected' };
+  }
+
+  // Validate file name for security
+  if (!validateFileName(file.name)) {
+    return { 
+      isValid: false, 
+      error: 'Invalid file name. Please use a safe file name without special characters.' 
+    };
+  }
+
+  // Check file size
+  const sizeValidation = validateFileSize(file);
+  if (!sizeValidation) {
+    const maxSizeMB = Math.round(APP_CONFIG.MAX_FILE_SIZE / (1024 * 1024));
+    return { 
+      isValid: false, 
+      error: `File size exceeds ${maxSizeMB}MB limit` 
+    };
+  }
+
+  // Check file type
+  const typeValidation = validateFileType(file);
+  if (!typeValidation) {
+    return { 
+      isValid: false, 
+      error: 'Only text files (.txt, .html, .csv) are allowed' 
+    };
+  }
+
+  return { isValid: true };
 }
 
 /**
@@ -87,13 +135,15 @@ export function showError(message) {
   errorTag.setAttribute('role', 'alert');
   errorTag.setAttribute('aria-live', 'assertive');
   errorTag.style.color = APP_CONFIG.ERROR_COLOR;
-  const errorText = document.createTextNode(`ERROR: ${message}`);
-  errorTag.appendChild(errorText);
+  
+  // Use secure text content setting
+  const sanitizedMessage = sanitizeText(message);
+  safeSetTextContent(errorTag, `ERROR: ${sanitizedMessage}`);
   consoleDiv.appendChild(errorTag);
   
   // Announce error to screen readers
   if (window.speechSynthesis) {
-    const utterance = new SpeechSynthesisUtterance(`Error: ${message}`);
+    const utterance = new SpeechSynthesisUtterance(`Error: ${sanitizedMessage}`);
     utterance.volume = 0.1;
     window.speechSynthesis.speak(utterance);
   }
@@ -106,8 +156,10 @@ export function showSuccess(message) {
   successTag.setAttribute('role', 'status');
   successTag.setAttribute('aria-live', 'polite');
   successTag.style.color = APP_CONFIG.SUCCESS_COLOR;
-  const successText = document.createTextNode(message);
-  successTag.appendChild(successText);
+  
+  // Use secure text content setting
+  const sanitizedMessage = sanitizeText(message);
+  safeSetTextContent(successTag, sanitizedMessage);
   consoleDiv.appendChild(successTag);
 }
 
@@ -154,14 +206,38 @@ export function removeProgress() {
  * Character scanning utilities
  */
 export function scanTextForCharacters(text) {
-  const matches = text.match(REGEX_PATTERNS.SPECIAL_CHARS);
+  // Handle empty or null text
+  if (!text || typeof text !== 'string') {
+    return {
+      foundCharacters: [],
+      totalCount: 0,
+      hasSpecialChars: false,
+      contentWarnings: []
+    };
+  }
+  
+  // Sanitize and validate content first
+  const sanitizedText = sanitizeFileContent(text);
+  const validation = validateContent(sanitizedText);
+  
+  if (!validation.isValid) {
+    throw new Error(`Content validation failed: ${validation.errors.join(', ')}`);
+  }
+  
+  // Log warnings if any suspicious patterns found
+  if (validation.warnings.length > 0) {
+    console.warn('Content validation warnings:', validation.warnings);
+  }
+  
+  const matches = sanitizedText.match(REGEX_PATTERNS.SPECIAL_CHARS);
   const foundChars = matches ? [...new Set(matches)] : [];
   const count = matches ? matches.length : 0;
   
   return {
     foundCharacters: foundChars,
     totalCount: count,
-    hasSpecialChars: count > 0
+    hasSpecialChars: count > 0,
+    contentWarnings: validation.warnings
   };
 }
 

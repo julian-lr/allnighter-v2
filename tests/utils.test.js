@@ -136,9 +136,9 @@ describe('File Validation', () => {
     const invalidSizeFile = { name: 'test.txt', size: 10 * 1024 * 1024 };
     const invalidTypeFile = { name: 'test.jpg', size: 1024 };
 
-    expect(validateFile(validFile)).toBe(true);
-    expect(validateFile(invalidSizeFile)).toBe(false);
-    expect(validateFile(invalidTypeFile)).toBe(false);
+    expect(validateFile(validFile).isValid).toBe(true);
+    expect(validateFile(invalidSizeFile).isValid).toBe(false);
+    expect(validateFile(invalidTypeFile).isValid).toBe(false);
   });
 });
 

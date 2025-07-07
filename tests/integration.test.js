@@ -87,7 +87,7 @@ describe('File Processing Integration', () => {
       };
 
       const isValid = validateFile(invalidFile);
-      expect(isValid).toBe(false);
+      expect(isValid.isValid).toBe(false);
       
       // File should be rejected due to both size and type
       expect(invalidFile.size).toBeGreaterThan(mockConfig.APP_CONFIG.MAX_FILE_SIZE);
@@ -147,7 +147,7 @@ describe('File Processing Integration', () => {
       };
 
       // Step 1: Validate file
-      expect(validateFile(testFile)).toBe(true);
+      expect(validateFile(testFile).isValid).toBe(true);
 
       // Step 2: Set up processing state
       updateState({ 
@@ -188,7 +188,7 @@ describe('File Processing Integration', () => {
         { name: 'toolarge.txt', size: 10 * 1024 * 1024 } // Should be rejected
       ];
 
-      const validFiles = files.filter(validateFile);
+      const validFiles = files.filter(file => validateFile(file).isValid);
       
       expect(validFiles).toHaveLength(3);
       expect(validFiles.map(f => f.name)).toEqual(['file1.txt', 'file2.html', 'file3.css']);

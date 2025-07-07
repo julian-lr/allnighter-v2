@@ -257,7 +257,7 @@ describe('End-to-End User Scenarios', () => {
       ];
 
       invalidFiles.forEach(file => {
-        expect(validateFile(file)).toBe(false);
+        expect(validateFile(file).isValid).toBe(false);
       });
 
       // Simulate error display
@@ -276,7 +276,7 @@ describe('End-to-End User Scenarios', () => {
         size: 10 * 1024 * 1024 // 10MB
       };
 
-      expect(validateFile(oversizedFile)).toBe(false);
+      expect(validateFile(oversizedFile).isValid).toBe(false);
       
       showError('File is too large');
       
