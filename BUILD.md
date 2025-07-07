@@ -62,11 +62,8 @@ This will:
 ### Vercel
 - Uses `vercel.json` configuration
 - Automatically detects the `public` output directory
-
-### Netlify  
-- Uses `netlify.toml` configuration
 - Build command: `npm run build`
-- Publish directory: `public`
+- Output directory: `public`
 
 ### Other platforms
 - Build command: `npm run build`
