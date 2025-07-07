@@ -6,3 +6,6 @@ css/styles.css.map
 .DS_Store
 Thumbs.db
 *.log
+
+# Build output
+public/

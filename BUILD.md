@@ -19,7 +19,8 @@ npm run serve
 
 ## Build Commands
 
-- `npm run build` - Full production build (SCSS + minification)
+- `npm run build` - Full production build (SCSS + minification + public directory)
+- `npm run build:public` - Create public directory for deployment
 - `npm run scss` - Compile SCSS to CSS (compressed)
 - `npm run scss:watch` - Watch SCSS files for changes
 - `npm run minify` - Minify CSS and JavaScript files
@@ -27,12 +28,26 @@ npm run serve
 - `npm run format` - Format code with Prettier
 - `npm run validate` - Validate HTML files
 
+## Deployment
+
+The build process creates a `public` directory containing all deployment files:
+
+```bash
+npm run build
+```
+
+This will:
+1. Compile SCSS to compressed CSS
+2. Minify JavaScript files  
+3. Copy all necessary files to `public/` directory
+
 ## File Structure
 
 - Source SCSS files are in `/scss/`
 - Compiled CSS goes to `/css/styles.css`
 - Minified files have `.min.js` and `.min.css` extensions
-- Use minified files for production deployment
+- **Production files** are copied to `/public/` for deployment
+- Use files in `public/` directory for production deployment
 
 ## Development Workflow
 
@@ -40,3 +55,19 @@ npm run serve
 2. Run `npm run serve` in another terminal to serve the app
 3. Make changes to SCSS files - CSS will auto-compile
 4. Before deployment, run `npm run build` for production files
+5. Deploy the `public/` directory to your hosting platform
+
+## Platform-Specific Deployment
+
+### Vercel
+- Uses `vercel.json` configuration
+- Automatically detects the `public` output directory
+
+### Netlify  
+- Uses `netlify.toml` configuration
+- Build command: `npm run build`
+- Publish directory: `public`
+
+### Other platforms
+- Build command: `npm run build`
+- Output directory: `public`

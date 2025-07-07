@@ -5,7 +5,8 @@
   "main": "index.html",
   "type": "module",
   "scripts": {
-    "build": "npm run scss && npm run minify",
+    "build": "npm run scss && npm run minify && npm run build:public",
+    "build:public": "node build-public.js",
     "scss": "sass scss/main.scss css/styles.css --style compressed --source-map",
     "scss:watch": "sass scss/main.scss css/styles.css --watch --style expanded --source-map",
     "minify": "npm run minify:css && npm run minify:js",
@@ -13,6 +14,7 @@
     "minify:js": "terser js/esp-logic.js -o js/esp-logic.min.js --compress --mangle && terser js/eng-logic.js -o js/eng-logic.min.js --compress --mangle && terser js/local-storage-redirect.js -o js/local-storage-redirect.min.js --compress --mangle",
     "dev": "npm run scss:watch",
     "serve": "npx http-server . -p 3000 -o",
+    "serve:public": "npx http-server public -p 3000 -o",
     "lint": "eslint js/*.js",
     "format": "prettier --write js/*.js scss/**/*.scss *.html pages/*.html",
     "validate": "html-validate pages/*.html index.html",
