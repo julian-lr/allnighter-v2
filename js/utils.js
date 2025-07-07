@@ -246,7 +246,21 @@ export function scanTextForCharacters(text) {
  */
 export function initializeDragAndDrop(handleFilesCallback) {
   const uploadArea = document.querySelector(SELECTORS.UPLOAD_AREA);
-  if (!uploadArea) return;
+  const fileInput = document.querySelector(SELECTORS.FILE_INPUT);
+  if (!uploadArea || !fileInput) return;
+
+  // Add click handler to upload area to trigger file input
+  uploadArea.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  // Add keyboard support for accessibility
+  uploadArea.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      fileInput.click();
+    }
+  });
 
   ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     uploadArea.addEventListener(eventName, preventDefaults, false);
@@ -292,7 +306,7 @@ function handleDrop(e, handleFilesCallback) {
 export function exportResults(format = 'txt', language = 'en') {
   if (scanResults.length === 0) {
     const message = language === 'es' 
-      ? 'No hay resultados para exportar' 
+      ? 'No tenés resultados para exportar' 
       : 'No results to export';
     showError(message);
     return;
@@ -332,7 +346,7 @@ export function exportResults(format = 'txt', language = 'en') {
 export function copyResultsToClipboard(language = 'en') {
   if (scanResults.length === 0) {
     const message = language === 'es' 
-      ? 'No hay resultados para copiar' 
+      ? 'No tenés resultados para copiar' 
       : 'No results to copy';
     showError(message);
     return;
@@ -376,14 +390,25 @@ export function createFileReader(onSuccess, onError) {
   
   reader.onloadend = function(e) {
     try {
-      onSuccess(e.target.result);
+      const content = e.target.result;
+      if (content === null || content === undefined) {
+        onError(new Error('File content is empty or null'));
+        return;
+      }
+      onSuccess(content);
     } catch (error) {
+      console.error('Error processing file content:', error);
       onError(error);
     }
   };
   
-  reader.onerror = function() {
-    onError(new Error('File reading failed'));
+  reader.onerror = function(e) {
+    console.error('FileReader error:', e);
+    onError(new Error('File reading failed - possible encoding issue'));
+  };
+  
+  reader.onabort = function() {
+    onError(new Error('File reading was aborted'));
   };
   
   return reader;

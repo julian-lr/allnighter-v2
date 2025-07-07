@@ -66,6 +66,7 @@
 
 // Drag and drop styling
 .drag-drop-area {
+    position: relative;
     border: 2px dashed #666;
     border-radius: 10px;
     padding: 40px 20px;
@@ -86,6 +87,10 @@
     pointer-events: none;
 }
 
+.upload {
+    display: contents;
+}
+
 .upload-icon {
     font-size: 3rem;
     margin-bottom: 10px;
@@ -103,13 +108,25 @@
     margin: 5px 0 15px 0;
 }
 
-.file-input {
-    opacity: 0;
-    position: absolute;
-    pointer-events: auto;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+// File input - override Bootstrap styles with high specificity
+.drag-drop-area .upload .file-input,
+.upload .file-input.file-input,
+input[type="file"].file-input,
+input.file-input {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    z-index: -1 !important;
 }
 
 // Export buttons styling

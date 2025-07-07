@@ -20,6 +20,25 @@
     />
     <link href="../css/styles.css" rel="stylesheet" type="text/css" />
     
+    <!-- Force hide file input to override Bootstrap -->
+    <style>
+      .file-input,
+      input[type="file"].file-input,
+      .btn.file-input,
+      input.file-input {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -999 !important;
+      }
+    </style>
+    
     <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json" />
     <meta name="theme-color" content="#00ff00" />
@@ -64,6 +83,7 @@
           >
         </p>
         <div class="form-upload pagecontainer__form drag-drop-area"
+             id="upload-area"
              role="button" 
              tabindex="0"
              aria-labelledby="upload-label"
@@ -75,8 +95,9 @@
             <form class="upload">
               <input
                 type="file"
-                class="btn file-input"
-                id="btn"
+                class="file-input"
+                id="uploaded"
+                style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; top: -9999px !important; width: 0 !important; height: 0 !important;"
                 aria-label="Select files to analyze for special characters"
                 alt="Upload files"
                 multiple

@@ -20,6 +20,25 @@
     />
     <link href="../css/styles.css" rel="stylesheet" type="text/css" />
     
+    <!-- Force hide file input to override Bootstrap -->
+    <style>
+      .file-input,
+      input[type="file"].file-input,
+      .btn.file-input,
+      input.file-input {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -999 !important;
+      }
+    </style>
+    
     <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json" />
     <meta name="theme-color" content="#00ff00" />
@@ -53,26 +72,28 @@
     <main role="main" id="main">
       <div class="pagecontainer">
         <h1 class="pagecontainer__title" id="page-title">
-          Eleg&iacute; el archivo y, en segundos,<br>vas a ver el
+          Elegí el archivo y, en segundos,<br>vas a ver el
           resultado en la consola de abajo.
         </h1>
         <p class="pagecontainer__subtitle">
           No te preocupes, no guardamos nada.<br><a href="../js/esp-logic.js" class="pagecontainer__a">Podés revisar el JavaScript acá</a>.
         </p>
         <div class="form-upload pagecontainer__form drag-drop-area" 
+             id="upload-area"
              role="button" 
              tabindex="0"
              aria-labelledby="upload-label"
              aria-describedby="upload-hint">
           <div class="upload-content">
             <div class="upload-icon" aria-hidden="true">📁</div>
-            <p class="upload-text" id="upload-label">Arrastra archivos aquí o haz clic para seleccionar</p>
+            <p class="upload-text" id="upload-label">Arrastrá archivos acá o hacé clic para seleccionar</p>
             <p class="upload-hint" id="upload-hint">Archivos soportados: .txt, .html, .css, .js, .xml, .csv (máx. 5MB)</p>
             <form class="upload">
               <input
                 type="file"
-                class="btn file-input"
-                id="btn"
+                class="file-input"
+                id="uploaded"
+                style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; top: -9999px !important; width: 0 !important; height: 0 !important;"
                 aria-label="Seleccionar archivos para analizar caracteres especiales"
                 alt="Subir archivos"
                 multiple

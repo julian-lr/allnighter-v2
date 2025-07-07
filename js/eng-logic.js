@@ -90,9 +90,15 @@ function StartOP(e) {
     );
 
     try {
-      reader.readAsText(validFiles[i]);
+      // Try reading as UTF-8 first, then fallback to other encodings
+      reader.readAsText(validFiles[i], 'UTF-8');
     } catch (error) {
-      showError(`${MESSAGES[LANG].ERROR_FILE_READ}: ${validFiles[i].name}`);
+      // Try alternative encoding
+      try {
+        reader.readAsText(validFiles[i], 'ISO-8859-1');
+      } catch (fallbackError) {
+        showError(`${MESSAGES[LANG].ERROR_FILE_READ}: ${validFiles[i].name}`);
+      }
     }
   }
 }

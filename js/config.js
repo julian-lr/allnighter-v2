@@ -45,11 +45,11 @@ export const MESSAGES = {
     ERROR_FILE_SIZE: 'El archivo es demasiado grande. Tamaño máximo: 5MB',
     ERROR_FILE_TYPE: 'Tipo de archivo no soportado. Tipos permitidos: .txt, .html, .htm, .css, .js, .xml, .csv',
     ERROR_FILE_READ: 'Error al leer el archivo',
-    ERROR_NO_FILES: 'No se seleccionaron archivos',
+    ERROR_NO_FILES: 'No seleccionaste ningún archivo',
     SUCCESS_PROCESSING: 'Procesando archivos...',
     SUCCESS_COMPLETE: 'Análisis completado',
     PROGRESS_PROCESSING: 'Procesando archivo {current} de {total}...',
-    EXPORT_SUCCESS: 'Resultados exportados exitosamente',
+    EXPORT_SUCCESS: 'Resultados descargados correctamente',
     COPY_SUCCESS: 'Resultados copiados al portapapeles'
   },
   

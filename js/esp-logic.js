@@ -91,9 +91,15 @@ function StartOP(e) {
     );
 
     try {
-      reader.readAsText(validFiles[i]);
+      // Try reading as UTF-8 first, then fallback to other encodings
+      reader.readAsText(validFiles[i], 'UTF-8');
     } catch (error) {
-      showError(`${MESSAGES[LANG].ERROR_FILE_READ}: ${validFiles[i].name}`);
+      // Try alternative encoding
+      try {
+        reader.readAsText(validFiles[i], 'ISO-8859-1');
+      } catch (fallbackError) {
+        showError(`${MESSAGES[LANG].ERROR_FILE_READ}: ${validFiles[i].name}`);
+      }
     }
   }
 }
@@ -191,19 +197,19 @@ function addExportButtons() {
   
   const exportTxtBtn = document.createElement('button');
   exportTxtBtn.id = 'export-txt';
-  exportTxtBtn.textContent = 'Exportar TXT';
+  exportTxtBtn.textContent = 'Descargar TXT';
   exportTxtBtn.className = 'export-btn';
   exportTxtBtn.addEventListener('click', () => exportResults('txt', 'es'));
   
   const exportCsvBtn = document.createElement('button');
   exportCsvBtn.id = 'export-csv';
-  exportCsvBtn.textContent = 'Exportar CSV';
+  exportCsvBtn.textContent = 'Descargar CSV';
   exportCsvBtn.className = 'export-btn';
   exportCsvBtn.addEventListener('click', () => exportResults('csv', 'es'));
   
   const copyBtn = document.createElement('button');
   copyBtn.id = 'copy-results';
-  copyBtn.textContent = 'Copiar al Portapapeles';
+  copyBtn.textContent = 'Copiar Resultados';
   copyBtn.className = 'export-btn';
   copyBtn.addEventListener('click', () => copyResultsToClipboard('es'));
   
