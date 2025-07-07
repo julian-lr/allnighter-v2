@@ -1,6 +1,4 @@
 {
-  "version": 2,
-  "name": "allnighter-v2",
   "builds": [
     {
       "src": "package.json",
@@ -8,12 +6,6 @@
       "config": {
         "distDir": "public"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
     }
   ]
 }
